@@ -1,6 +1,6 @@
 ext {
     //false:关闭组件化， true:打开组件化
-    isAlone = true
+    isAlone = false
 
     android = [
             compileSdkVersion: 30,
