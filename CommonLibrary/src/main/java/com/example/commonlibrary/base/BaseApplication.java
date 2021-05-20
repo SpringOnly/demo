@@ -2,8 +2,8 @@ package com.example.commonlibrary.base;
 
 import android.app.Application;
 
+import com.alibaba.android.arouter.BuildConfig;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.example.commonlibrary.BuildConfig;
 
 public class BaseApplication extends Application {
     private static BaseApplication instance;

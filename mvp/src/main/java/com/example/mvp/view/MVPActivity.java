@@ -7,12 +7,12 @@ import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.commonlibrary.base.BaseActivity;
 import com.example.commonlibrary.base.arouter.ARouterConstant;
-import com.example.mvp.databinding.ActivityMvpActivityBinding;
+import com.example.mvp.databinding.ActivityMvpBinding;
 import com.example.mvp.presenter.MVPPresenter;
 import com.example.mvp.presenter.contract.MVPBannerContract;
 
 @Route(path = ARouterConstant.MVP)
-public class MVPActivity extends BaseActivity<ActivityMvpActivityBinding> implements MVPBannerContract.MVPView {
+public class MVPActivity extends BaseActivity<ActivityMvpBinding> implements MVPBannerContract.MVPView {
 
     MVPPresenter mMVPPresenter;
 
@@ -21,8 +21,8 @@ public class MVPActivity extends BaseActivity<ActivityMvpActivityBinding> implem
 
 
     @Override
-    protected ActivityMvpActivityBinding getViewBinding() {
-        return ActivityMvpActivityBinding.inflate(getLayoutInflater());
+    protected ActivityMvpBinding getViewBinding() {
+        return ActivityMvpBinding.inflate(getLayoutInflater());
     }
 
     @Override
