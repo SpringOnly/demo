@@ -1,0 +1,7 @@
+include ':app'
+rootProject.name = "ARouter"
+include ':CommonLibrary'
+include ':main'
+include ':mvc'
+include ':mvp'
+include ':mvvm'
