@@ -16,6 +16,15 @@ import com.example.commonlibrary.router_provider.HelloProvider;
 import com.example.commonlibrary.util.LogUtil;
 import com.example.main.databinding.ActivityMainBinding;
 
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.Scheduler;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
+import io.reactivex.schedulers.Schedulers;
+
 
 public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
@@ -40,16 +49,16 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
                         .build(ARouterConstant.MVC)
                         .navigation(MainActivity.this,
                                 new NavCallback() {
-                            @Override
-                            public void onArrival(Postcard postcard) {
-                                LogUtil.e("MainActivity：" + "onArrival : " + postcard.getPath());
-                            }
+                                    @Override
+                                    public void onArrival(Postcard postcard) {
+                                        LogUtil.e("MainActivity：" + "onArrival : " + postcard.getPath());
+                                    }
 
-                            @Override
-                            public void onInterrupt(Postcard postcard) {
-                                LogUtil.e("MainActivity：" + "onInterrupt : " + postcard.getPath());
-                            }
-                        }));
+                                    @Override
+                                    public void onInterrupt(Postcard postcard) {
+                                        LogUtil.e("MainActivity：" + "onInterrupt : " + postcard.getPath());
+                                    }
+                                }));
         Binding.mvp.setOnClickListener(v ->
                 ARouter.getInstance().build(ARouterConstant.MVP)
                         .withInt("age", 18)

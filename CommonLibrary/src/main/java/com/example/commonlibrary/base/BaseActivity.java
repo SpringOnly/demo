@@ -8,8 +8,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewbinding.ViewBinding;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.trello.rxlifecycle3.components.support.RxAppCompatActivity;
 
-public abstract class BaseActivity<VB extends ViewBinding> extends AppCompatActivity {
+public abstract class BaseActivity<VB extends ViewBinding> extends RxAppCompatActivity {
 
     protected VB Binding;
 

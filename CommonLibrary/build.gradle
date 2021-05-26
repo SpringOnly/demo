@@ -51,4 +51,7 @@ dependencies {
     api rootProject.ext.dependencies.arouter_api
     api rootProject.ext.dependencies.log_interceptor
     api rootProject.ext.dependencies.rxjava2_adapter
+    api rootProject.ext.dependencies.rxlifecycle
+    api rootProject.ext.dependencies.rxlifecycle_components
+    api rootProject.ext.dependencies.brvah
 }

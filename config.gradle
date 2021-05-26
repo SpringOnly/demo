@@ -1,6 +1,6 @@
 ext {
     //false:关闭组件化， true:打开组件化
-    isAlone = false
+    isAlone = true
 
     android = [
             compileSdkVersion: 30,
@@ -12,21 +12,24 @@ ext {
     ]
 
     dependencies = [
-            annotation      : "androidx.annotation:annotation:1.2.0",
-            appcompat       : "androidx.appcompat:appcompat:1.2.0",
-            material        : "com.google.android.material:material:1.2.1",
-            constraintlayout: "androidx.constraintlayout:constraintlayout:2.0.1",
-            okhttp          : "com.squareup.okhttp3:okhttp:4.9.1",
-            retrofit        : "com.squareup.retrofit2:retrofit:2.9.0",
-            utilcodex       : "com.blankj:utilcodex:1.30.6",
-            rxjava          : "io.reactivex.rxjava2:rxjava:2.0.1",
-            rxandroid       : "io.reactivex.rxjava2:rxandroid:2.0.1",
-            fastjson        : "com.alibaba:fastjson:1.1.72.android",
-            junit           : "junit:junit:4.+",
-            espresso_core   : "androidx.test.espresso:espresso-core:3.3.0",
-            arouter_api     : "com.alibaba:arouter-api:1.5.1",
-            arouter_compiler: "com.alibaba:arouter-compiler:1.5.1",
-            log_interceptor : "com.squareup.okhttp3:logging-interceptor:4.9.1",
-            rxjava2_adapter : "com.squareup.retrofit2:adapter-rxjava2:2.9.0"
+            annotation            : "androidx.annotation:annotation:1.2.0",
+            appcompat             : "androidx.appcompat:appcompat:1.2.0",
+            material              : "com.google.android.material:material:1.2.1",
+            constraintlayout      : "androidx.constraintlayout:constraintlayout:2.0.1",
+            okhttp                : "com.squareup.okhttp3:okhttp:4.9.1",
+            retrofit              : "com.squareup.retrofit2:retrofit:2.9.0",
+            utilcodex             : "com.blankj:utilcodex:1.30.6",
+            rxjava                : "io.reactivex.rxjava2:rxjava:2.0.1",
+            rxandroid             : "io.reactivex.rxjava2:rxandroid:2.0.1",
+            fastjson              : "com.alibaba:fastjson:1.1.72.android",
+            junit                 : "junit:junit:4.+",
+            espresso_core         : "androidx.test.espresso:espresso-core:3.3.0",
+            arouter_api           : "com.alibaba:arouter-api:1.5.1",
+            arouter_compiler      : "com.alibaba:arouter-compiler:1.5.1",
+            log_interceptor       : "com.squareup.okhttp3:logging-interceptor:4.9.1",
+            rxjava2_adapter       : "com.squareup.retrofit2:adapter-rxjava2:2.9.0",
+            rxlifecycle           : "com.trello.rxlifecycle3:rxlifecycle:3.1.0",
+            rxlifecycle_components: "com.trello.rxlifecycle3:rxlifecycle-components:3.1.0",
+            brvah                 : "com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4"
     ]
 }
