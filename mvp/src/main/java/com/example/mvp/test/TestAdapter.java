@@ -12,6 +12,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class TestAdapter extends BaseQuickAdapter<TestBean, BaseViewHolder> {
+    public static int temp = -1;
+
     public TestAdapter(int layoutResId, @Nullable List<TestBean> data) {
         super(layoutResId, data);
     }
@@ -20,7 +22,7 @@ public class TestAdapter extends BaseQuickAdapter<TestBean, BaseViewHolder> {
     protected void convert(@NotNull BaseViewHolder baseViewHolder, TestBean testBean) {
         TextView tv = baseViewHolder.getView(R.id.itemTvSelect);
         tv.setText(testBean.getNameType());
-        if (testBean.isCheck()) {
+        if (temp == baseViewHolder.getAdapterPosition()) {
             tv.setBackgroundResource(R.drawable.test_select_bg);
         } else {
             tv.setBackgroundResource(R.drawable.test_no_select_bg);

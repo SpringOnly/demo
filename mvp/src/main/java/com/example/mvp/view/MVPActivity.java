@@ -76,14 +76,7 @@ public class MVPActivity extends BaseActivity<ActivityMvpBinding> implements MVP
         testAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(@NonNull @NotNull BaseQuickAdapter<?, ?> adapter, @NonNull @NotNull View view, int position) {
-                for (int i = 0; i < testAdapter.getData().size(); i++) {
-                    boolean check = testAdapter.getData().get(i).isCheck();
-                    if (check) {
-                        testAdapter.getData().get(i).setCheck(false);
-                        break;
-                    }
-                }
-                testAdapter.getData().get(position).setCheck(true);
+                TestAdapter.temp = position;
                 testAdapter.notifyDataSetChanged();
             }
         });
