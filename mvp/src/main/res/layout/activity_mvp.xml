@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".view.MVPActivity">
+    tools:context="com.example.mvp.view.MVPActivity">
 
     <Button
         android:layout_width="match_parent"
@@ -19,9 +19,14 @@
         android:layout_height="wrap_content" />
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/testRv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <com.example.mvp.view.NoPaddingTextView
+        android:textSize="13sp"
+        android:text="1234"
+        android:layout_centerInParent="true"
+        android:textColor="@color/white"
+        android:background="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-</LinearLayout>
+
+</RelativeLayout>
