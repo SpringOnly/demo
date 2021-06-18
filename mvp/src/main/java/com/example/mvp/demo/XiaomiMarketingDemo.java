@@ -1,4 +1,4 @@
-package com.example.mvp.util;
+package com.example.mvp.demo;
 
 
 import android.text.TextUtils;
@@ -6,7 +6,7 @@ import android.text.TextUtils;
 import com.blankj.utilcode.util.EncodeUtils;
 import com.blankj.utilcode.util.EncryptUtils;
 import com.blankj.utilcode.util.NetworkUtils;
-import com.example.commonlibrary.util.LogUtil;
+import com.example.mvp.util.BaseUtils;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -14,7 +14,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-public class XiaomiMarketing {
+public class XiaomiMarketingDemo {
 
     public static void initSign() {
         LinkedHashMap<String, String> map = new LinkedHashMap<>();
@@ -25,7 +25,6 @@ public class XiaomiMarketing {
 //        map.put("oaid", imei);
 //        map.put("conv_time", convTime);
 //        map.put("client_ip",ipAddress);
-
         map.put("imei", "91b9185dba1772851dd02b276a6c969e");
         map.put("conv_time", "1504687208890");
         map.put("client_ip", "127.0.0.1");
@@ -58,7 +57,7 @@ public class XiaomiMarketing {
         String BaseData = queryResult + "&sign=" + md5Result;
         //变量 encrypt_key：kqkYAKhbqNNbMzTc
         String encryptKey = BaseUtils.encrypt(BaseData, "kqkYAKhbqNNbMzTc");
-        LogUtil.e("encryptKey:" + encryptKey);
+//        LogUtil.e("encryptKey:" + encryptKey);
         finallyRequest(encryptKey);
     }
 
@@ -80,6 +79,6 @@ public class XiaomiMarketing {
             sb.append(EncodeUtils.urlEncode(result, "utf-8"));
             sb.append("&");
         }
-        LogUtil.e("aaaa:" + sb.substring(0, sb.toString().length() - 1));
+//        LogUtil.e("aaaa:" + sb.substring(0, sb.toString().length() - 1));
     }
 }

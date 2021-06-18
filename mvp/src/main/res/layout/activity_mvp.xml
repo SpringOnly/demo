@@ -26,11 +26,6 @@
         android:includeFontPadding="false"
         android:text="asadasdasdasdas" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
     <com.example.mvp.widget.FatArrowView
         android:layout_width="@dimen/dp_80"
         android:visibility="gone"
