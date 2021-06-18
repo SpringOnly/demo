@@ -1,4 +1,4 @@
-package com.example.mvp;
+package com.example.mvp.widget;
 
 import android.content.Context;
 import android.widget.Toast;

@@ -1,6 +1,8 @@
 package com.example.commonlibrary.base;
 
+import android.graphics.Point;
 import android.os.Bundle;
+import android.view.MotionEvent;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
@@ -13,13 +15,13 @@ import com.trello.rxlifecycle3.components.support.RxAppCompatActivity;
 public abstract class BaseActivity<VB extends ViewBinding> extends RxAppCompatActivity {
 
     protected VB Binding;
+    private Point mPoint;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Binding = getViewBinding();
         setContentView(Binding.getRoot());
-
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.hide();
@@ -28,6 +30,19 @@ public abstract class BaseActivity<VB extends ViewBinding> extends RxAppCompatAc
         initView();
         initListener();
         initData();
+
+        mPoint = new Point();
+    }
+
+    protected Point getPoint() {
+        return mPoint;
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        mPoint.x = (int) ev.getX();
+        mPoint.y = (int) ev.getY();
+        return super.dispatchTouchEvent(ev);
     }
 
     protected abstract VB getViewBinding();
