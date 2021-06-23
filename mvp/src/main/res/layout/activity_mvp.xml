@@ -8,16 +8,11 @@
     tools:context="com.example.mvp.view.MVPActivity">
 
 
-    <ImageView
-        android:id="@+id/Background"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="getData"
-        android:text="MVP获取数据" />
+        android:text="获取数据" />
 
     <TextView
         android:id="@+id/mvpResult"
@@ -25,21 +20,6 @@
         android:layout_height="wrap_content"
         android:includeFontPadding="false"
         android:text="asadasdasdasdas" />
-
-    <com.example.mvp.widget.FatArrowView
-        android:layout_width="@dimen/dp_80"
-        android:visibility="gone"
-        android:layout_height="@dimen/dp_80"
-        android:layout_gravity="center_horizontal">
-
-        <CheckBox
-            android:id="@+id/check"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-    </com.example.mvp.widget.FatArrowView>
 
 
 </LinearLayout>

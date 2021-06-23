@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import com.blankj.utilcode.util.EncodeUtils;
 import com.blankj.utilcode.util.EncryptUtils;
 import com.blankj.utilcode.util.NetworkUtils;
+import com.example.commonlibrary.util.LogUtil;
 import com.example.mvp.util.BaseUtils;
 
 import org.jetbrains.annotations.NotNull;
@@ -16,18 +17,21 @@ import java.util.regex.Pattern;
 
 public class XiaomiMarketingDemo {
 
+
+    static String customer_id = "262522";
+    static String appId = "464254";
+    static String sign_key = "HvHYgPtFXvbieLAZ";
+    static String encrypt_key = "lRBTsNjyaCUKsWax";
+    static String conv_type = "APP_REGISTER";
+
     public static void initSign() {
         LinkedHashMap<String, String> map = new LinkedHashMap<>();
         String ipAddress = !TextUtils.isEmpty(NetworkUtils.getIPAddress(true)) ? NetworkUtils.getIPAddress(true) : "";
         String convTime = String.valueOf(System.currentTimeMillis());
-        String imei = BaseUtils.getOAID();
-
-//        map.put("oaid", imei);
-//        map.put("conv_time", convTime);
-//        map.put("client_ip",ipAddress);
-        map.put("imei", "91b9185dba1772851dd02b276a6c969e");
-        map.put("conv_time", "1504687208890");
-        map.put("client_ip", "127.0.0.1");
+        String oaid = BaseUtils.getOAID();
+        map.put("oaid", oaid);
+        map.put("conv_time", convTime);
+        map.put("client_ip", ipAddress);
         joint(map);
 
     }
@@ -47,7 +51,7 @@ public class XiaomiMarketingDemo {
         String decodeResult;
         decodeResult = EncodeUtils.urlEncode(queryResult);
         //变量 sign_key:UyXPckwPOraTlyxZ
-        String propertyResult = "UyXPckwPOraTlyxZ" + "&" + decodeResult;
+        String propertyResult = sign_key + "&" + decodeResult;
         String md5Result = EncryptUtils.encryptMD5ToString(propertyResult).toLowerCase();
         encrypt(md5Result, queryResult);
     }
@@ -56,19 +60,19 @@ public class XiaomiMarketingDemo {
     private static void encrypt(String md5Result, String queryResult) {
         String BaseData = queryResult + "&sign=" + md5Result;
         //变量 encrypt_key：kqkYAKhbqNNbMzTc
-        String encryptKey = BaseUtils.encrypt(BaseData, "kqkYAKhbqNNbMzTc");
+        String encryptKey = BaseUtils.encrypt(BaseData, encrypt_key);
 //        LogUtil.e("encryptKey:" + encryptKey);
         finallyRequest(encryptKey);
     }
 
-    //生成最终的请求
+    //生成最终的url
     private static void finallyRequest(String encryptKey) {
         StringBuilder sb = new StringBuilder();
         LinkedHashMap<String, String> map = new LinkedHashMap<>();
-        map.put("appId", "136");
+        map.put("appId", appId);
         map.put("info", encryptKey);
-        map.put("customer_id", "47522");
-        map.put("conv_type", "APP_ACTIVE");
+        map.put("customer_id", customer_id);
+        map.put("conv_type", conv_type);
 
         for (Map.Entry<String, String> entry : map.entrySet()) {
             String key = entry.getKey();
@@ -79,6 +83,6 @@ public class XiaomiMarketingDemo {
             sb.append(EncodeUtils.urlEncode(result, "utf-8"));
             sb.append("&");
         }
-//        LogUtil.e("aaaa:" + sb.substring(0, sb.toString().length() - 1));
+        LogUtil.e("aaaa:" + "http://trail.e.mi.com/global/log?" + sb.substring(0, sb.toString().length() - 1));
     }
 }

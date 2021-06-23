@@ -1,7 +1,12 @@
 package com.example.mvp.view;
 
+import android.os.Bundle;
+import android.view.SurfaceHolder;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -9,8 +14,19 @@ import com.example.commonlibrary.base.BaseActivity;
 import com.example.commonlibrary.base.arouter.ARouterConstant;
 import com.example.commonlibrary.util.LogUtil;
 import com.example.mvc.databinding.ActivityMvpBinding;
+import com.example.mvp.demo.XiaomiMarketingDemo;
 import com.example.mvp.presenter.MVPPresenter;
 import com.example.mvp.presenter.contract.MVPBannerContract;
+import com.kk.taurus.playerbase.assist.OnVideoViewEventHandler;
+import com.kk.taurus.playerbase.config.PlayerLibrary;
+import com.kk.taurus.playerbase.entity.DataSource;
+import com.kk.taurus.playerbase.event.OnPlayerEventListener;
+import com.kk.taurus.playerbase.receiver.OnReceiverEventListener;
+import com.kk.taurus.playerbase.receiver.ReceiverGroup;
+
+import java.io.IOException;
+
+import tv.danmaku.ijk.media.player.IjkMediaPlayer;
 
 
 @Route(path = ARouterConstant.MVP)
@@ -21,30 +37,17 @@ public class MVPActivity extends BaseActivity<ActivityMvpBinding> implements MVP
     @Autowired(name = "age")
     int age;
 
-
     @Override
     protected ActivityMvpBinding getViewBinding() {
         return ActivityMvpBinding.inflate(getLayoutInflater());
     }
 
+
     @Override
     protected void initView() {
         mMVPPresenter = new MVPPresenter(this);
         Binding.mvpResult.setText(String.valueOf(age));
-        Binding.check.setOnCheckedChangeListener((buttonView, isChecked) -> LogUtil.e("onCheckedChanged:" + isChecked));
     }
-
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
-
 
 
 
@@ -55,7 +58,7 @@ public class MVPActivity extends BaseActivity<ActivityMvpBinding> implements MVP
 
     @Override
     protected void initData() {
-
+        XiaomiMarketingDemo.initSign();
     }
 
     public void getData(View view) {
@@ -71,6 +74,4 @@ public class MVPActivity extends BaseActivity<ActivityMvpBinding> implements MVP
     public void onError(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
-
-
 }
