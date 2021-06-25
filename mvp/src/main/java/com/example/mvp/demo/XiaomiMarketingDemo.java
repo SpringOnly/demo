@@ -26,14 +26,11 @@ public class XiaomiMarketingDemo {
 
     public static void initSign() {
         LinkedHashMap<String, String> map = new LinkedHashMap<>();
-        String ipAddress = !TextUtils.isEmpty(NetworkUtils.getIPAddress(true)) ? NetworkUtils.getIPAddress(true) : "";
         String convTime = String.valueOf(System.currentTimeMillis());
         String oaid = BaseUtils.getOAID();
         map.put("oaid", oaid);
         map.put("conv_time", convTime);
-        map.put("client_ip", ipAddress);
         joint(map);
-
     }
 
     //参数拼接签名
@@ -83,6 +80,6 @@ public class XiaomiMarketingDemo {
             sb.append(EncodeUtils.urlEncode(result, "utf-8"));
             sb.append("&");
         }
-        LogUtil.e("aaaa:" + "http://trail.e.mi.com/global/log?" + sb.substring(0, sb.toString().length() - 1));
+        LogUtil.e("Url:" + "http://trail.e.mi.com/global/log?" + sb.substring(0, sb.toString().length() - 1));
     }
 }

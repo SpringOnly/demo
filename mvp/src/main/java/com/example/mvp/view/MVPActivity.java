@@ -1,6 +1,10 @@
 package com.example.mvp.view;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.storage.StorageManager;
+import android.provider.MediaStore;
 import android.view.SurfaceHolder;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -10,6 +14,10 @@ import androidx.annotation.NonNull;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.blankj.utilcode.util.FileUtils;
+import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.PathUtils;
+import com.blankj.utilcode.util.TimeUtils;
 import com.example.commonlibrary.base.BaseActivity;
 import com.example.commonlibrary.base.arouter.ARouterConstant;
 import com.example.commonlibrary.util.LogUtil;
@@ -25,8 +33,15 @@ import com.kk.taurus.playerbase.receiver.OnReceiverEventListener;
 import com.kk.taurus.playerbase.receiver.ReceiverGroup;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.UUID;
 
 import tv.danmaku.ijk.media.player.IjkMediaPlayer;
+
+import static android.os.storage.StorageManager.ACTION_MANAGE_STORAGE;
 
 
 @Route(path = ARouterConstant.MVP)
@@ -50,7 +65,6 @@ public class MVPActivity extends BaseActivity<ActivityMvpBinding> implements MVP
     }
 
 
-
     @Override
     protected void initListener() {
 
@@ -58,8 +72,9 @@ public class MVPActivity extends BaseActivity<ActivityMvpBinding> implements MVP
 
     @Override
     protected void initData() {
-        XiaomiMarketingDemo.initSign();
+
     }
+
 
     public void getData(View view) {
         mMVPPresenter.MVPGetDate();
