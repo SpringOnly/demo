@@ -55,6 +55,8 @@ public class DynamicCircleView extends View {
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
         int heightSize = MeasureSpec.getSize(heightMeasureSpec);
 
+        float height;
+
         switch (widthMode) {
             case MeasureSpec.EXACTLY:
                 measureWidth = widthSize;
@@ -76,7 +78,9 @@ public class DynamicCircleView extends View {
             case MeasureSpec.UNSPECIFIED:
                 break;
         }
-        setMeasuredDimension(measureWidth, measureHeight);
+        height = measureHeight * mProgress + 0.5f + getPaddingTop() + getPaddingBottom();
+
+        setMeasuredDimension(measureWidth, (int) height);
     }
 
     @Override
