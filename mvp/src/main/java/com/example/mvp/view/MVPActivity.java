@@ -24,6 +24,7 @@ import com.example.commonlibrary.base.BaseActivity;
 import com.example.commonlibrary.base.arouter.ARouterConstant;
 import com.example.commonlibrary.util.LogUtil;
 import com.example.mvc.databinding.ActivityMvpBinding;
+import com.example.mvp.demo.DynamicCircleDemo;
 import com.example.mvp.demo.XiaomiMarketingDemo;
 import com.example.mvp.presenter.MVPPresenter;
 import com.example.mvp.presenter.contract.MVPBannerContract;
@@ -59,40 +60,11 @@ public class MVPActivity extends BaseActivity<ActivityMvpBinding> implements MVP
         return ActivityMvpBinding.inflate(getLayoutInflater());
     }
 
-    private float clickY;
-    private float maxHeight = 600;
-    private int progress;
-
-    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void initView() {
         mMVPPresenter = new MVPPresenter(this);
         Binding.mvpResult.setText(String.valueOf(age));
-
-
-        Binding.mainActivity.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                int action = event.getActionMasked();
-                switch (action) {
-                    case MotionEvent.ACTION_DOWN:
-                        clickY = event.getY();
-                        return true;
-                    case MotionEvent.ACTION_MOVE:
-                        float y = event.getY();
-                        if (y >= clickY) {
-                            if (y - clickY >= maxHeight) {
-                                Binding.DynamicCircle.setProgress(1);
-                            } else {
-                                float v1 = (y - clickY) / maxHeight <= 1 ? (y - clickY) / maxHeight : 1;
-                                Binding.DynamicCircle.setProgress(v1);
-                            }
-                        }
-                        return true;
-                }
-                return false;
-            }
-        });
+        DynamicCircleDemo.setOnTouch(Binding.mainActivity,Binding.DynamicCircle);
     }
 
     @Override
