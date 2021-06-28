@@ -61,5 +61,4 @@ public class BaseUtils {
             return null;
         }
     }
-
 }

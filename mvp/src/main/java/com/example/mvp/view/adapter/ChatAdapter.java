@@ -1,4 +1,4 @@
-package com.example.mvp.adapter;
+package com.example.mvp.view.adapter;
 
 
 import android.content.Context;

@@ -1,18 +1,6 @@
 package com.example.mvp.demo;
 
 
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
-import com.example.mvp.adapter.ChatAdapter;
-import com.example.mvp.adapter.GridLayoutAdapter;
-import com.example.mvp.bean.GridlayoutBean;
-import com.example.mvp.bean.TypeLeftBean;
-import com.example.mvp.bean.TypeRightBean;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class BaseAdapterDemo {
 
     public static void GridRV() {

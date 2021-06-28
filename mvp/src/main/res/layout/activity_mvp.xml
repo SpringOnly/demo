@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/main_activity"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.mvp.view.MVPActivity">
-
 
     <Button
         android:layout_width="match_parent"
@@ -20,6 +20,11 @@
         android:layout_height="wrap_content"
         android:includeFontPadding="false"
         android:text="asadasdasdasdas" />
+
+    <com.example.mvp.widget.DynamicCircleView
+        android:id="@+id/DynamicCircle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 
 </LinearLayout>
