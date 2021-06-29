@@ -21,7 +21,7 @@
         android:includeFontPadding="false"
         android:text="asadasdasdasdas" />
 
-    <com.example.mvp.widget.DynamicCircleView
+    <com.example.mvp.widget.TouchPullView
         android:id="@+id/DynamicCircle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

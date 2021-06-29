@@ -9,7 +9,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.commonlibrary.util.LogUtil;
 
 /**
- * 找不到路由的降级策略
+ * 找不到路由地址的降级策略
  */
 @Route(path = "/aaa/bbb")
 public class LoginDegradeService implements DegradeService {

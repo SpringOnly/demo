@@ -12,28 +12,28 @@ import androidx.annotation.Nullable;
 
 import com.example.commonlibrary.util.LogUtil;
 
-public class DynamicCircleView extends View {
+public class TouchPullView extends View {
 
     private Paint mPaint;
     //最小的半径
     private int circleRadius = 300;
-    //显示当前高度的百分比
+    //显示当前高度的进度
     private float mProgress;
 
     int measureWidth = 0;
     int measureHeight = 0;
 
-    public DynamicCircleView(Context context) {
+    public TouchPullView(Context context) {
         super(context);
         initView();
     }
 
-    public DynamicCircleView(Context context, @Nullable AttributeSet attrs) {
+    public TouchPullView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         initView();
     }
 
-    public DynamicCircleView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public TouchPullView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initView();
     }
@@ -79,15 +79,7 @@ public class DynamicCircleView extends View {
                 break;
         }
         height = measureHeight * mProgress + 0.5f + getPaddingTop() + getPaddingBottom();
-
         setMeasuredDimension(measureWidth, (int) height);
-    }
-
-    @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
-        LogUtil.e("h:" + h);
-        LogUtil.e("oldh:" + oldh);
     }
 
     @Override

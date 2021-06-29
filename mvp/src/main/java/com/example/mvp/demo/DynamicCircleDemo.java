@@ -4,7 +4,7 @@ package com.example.mvp.demo;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.example.mvp.widget.DynamicCircleView;
+import com.example.mvp.widget.TouchPullView;
 
 public class DynamicCircleDemo {
     //记录点击的下标
@@ -12,7 +12,12 @@ public class DynamicCircleDemo {
     //最大的滑动距离
     private static float maxHeight = 600;
 
-    public static void setOnTouch(View rootLayout, DynamicCircleView dynamicCircle) {
+    /**
+     * 根据手指滑动距离改变控件的高度
+     * @param rootLayout   根布局的id
+     * @param dynamicCircle 自定义控件
+     */
+    public static void setOnTouch(View rootLayout, TouchPullView dynamicCircle) {
         rootLayout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
