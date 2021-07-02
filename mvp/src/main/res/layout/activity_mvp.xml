@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:id="@+id/main_activity"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.mvp.view.MVPActivity">
@@ -25,6 +25,51 @@
         android:id="@+id/DynamicCircle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/host"
+            android:layout_width="@dimen/dp_120"
+            android:text="192.168.1.94"
+            android:layout_height="wrap_content"
+            android:hint="host" />
+
+        <EditText
+            android:id="@+id/port"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="wrap_content"
+            android:text="9933"
+            android:hint="port" />
+
+        <Button
+            android:id="@+id/ConnectStateBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_30"
+            android:text="Connect"
+            android:textAllCaps="false" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/send"
+        android:text="send"
+        android:textAllCaps="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/MessageResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_10"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_15" />
+
 
 
 </LinearLayout>

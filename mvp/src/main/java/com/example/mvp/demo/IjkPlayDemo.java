@@ -16,6 +16,7 @@ public class IjkPlayDemo {
     private IjkMediaPlayer mIjkMediaPlayer;
 
     public void PlayVideo(Context context) {
+        //xml新建SurfaceView
         SurfaceView surfaceView = new SurfaceView(context);
         mIjkMediaPlayer = new IjkMediaPlayer();
 

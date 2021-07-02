@@ -64,5 +64,6 @@ dependencies {
     implementation 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.8.8'
     implementation 'tv.danmaku.ijk.media:ijkplayer-exo:0.8.4'
 
+    implementation fileTree(dir: 'libs/', include: ['*.aar', '*.jar'], exclude: [])
     implementation 'com.kk.taurus.playerbase:playerbase:3.4.2'
 }
