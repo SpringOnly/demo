@@ -107,15 +107,15 @@ public class MVPActivity extends BaseActivity<ActivityMvpBinding> implements MVP
         sfs.addEventListener(SFSEvent.ADMIN_MESSAGE, this::MessageCallBack);
 
         sfs.connect(cfg);
-        if (mTimer == null) {
-            mTimer = new Timer();
-        }
-        mTimer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                sfs.send(new ExtensionRequest("ACTION_HEARTBEAT", new SFSObject()));
-            }
-        }, INTERVAL_HEARTBEAT, INTERVAL_HEARTBEAT);
+//        if (mTimer == null) {
+//            mTimer = new Timer();
+//        }
+//        mTimer.scheduleAtFixedRate(new TimerTask() {
+//            @Override
+//            public void run() {
+//                sfs.send(new ExtensionRequest("ACTION_HEARTBEAT", new SFSObject()));
+//            }
+//        }, INTERVAL_HEARTBEAT, INTERVAL_HEARTBEAT);
     }
 
     private void MessageCallBack(BaseEvent evt) {

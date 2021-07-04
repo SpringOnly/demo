@@ -59,11 +59,6 @@ android {
 
 dependencies {
     implementation project(':CommonLibrary')
-    implementation files('libs\\slf4j-api-1.6.1.jar')
-    implementation files('libs\\slf4j-simple-1.6.1.jar')
-    implementation files('libs\\netty-3.2.2.Final.jar')
-    implementation files('libs\\jdom.jar')
-    implementation files('libs\\commons-lang-2.4.jar')
     annotationProcessor rootProject.ext.dependencies.arouter_compiler
     implementation 'tv.danmaku.ijk.media:ijkplayer-java:0.8.8'
     implementation 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.8.8'
