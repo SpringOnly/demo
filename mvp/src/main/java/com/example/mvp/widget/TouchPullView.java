@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -44,6 +45,23 @@ public class TouchPullView extends View {
         mPaint.setDither(true);
         mPaint.setAntiAlias(true);
         mPaint.setColor(Color.BLACK);
+
+
+        /**
+         * 二阶曲线
+         */
+        //从左上角的距离
+//        mPath.quadTo(400, 0, 600, 200);
+        //从移动后的距离moveTo
+        //mPath.rQuadTo(200, -300, 400, 0);
+
+        /**
+         * 三阶曲线
+         */
+        //从左上角的距离
+        // mPath.cubicTo(180, 0, 400, 0, 500, 200);
+        //从移动后的距离moveTo
+//        mPath.rCubicTo(-20, -200, 200, -200, 300, 0);
     }
 
     @Override
@@ -92,5 +110,40 @@ public class TouchPullView extends View {
         mProgress = progress;
         requestLayout();
         LogUtil.e("progress:" + progress);
+    }
+
+    private void initBezierView() {
+        float[] xPoint = {0, 200, 500, 700, 800, 500, 600};
+        float[] yPoint = {0, 700, 1200, 200, 800, 1300, 600};
+
+//        mPath = new Path();
+//
+//        int fps = 1000;
+//        for (int i = 0; i < fps; i++) {
+//            float progress = (float) i / fps;
+//            float x = calculateBezier(progress, xPoint);
+//            float y = calculateBezier(progress, yPoint);
+//            mPath.lineTo(x, y);
+//        }
+    }
+
+
+    /**
+     *
+     * 计算贝塞尔曲线的位置
+     *
+     * @param t  进度t
+     * @param value 传入需要被计算的坐标
+     * @return 当前Time时刻的坐标
+     */
+    private float calculateBezier(float t, float... value) {
+        final int length = value.length;
+        for (int i = length - 1; i > 0; i--) {
+
+            for (int j = 0; j < i; j++) {
+                value[j] = value[j] + (value[j + 1] - value[j]) * t;
+            }
+        }
+        return value[0];
     }
 }

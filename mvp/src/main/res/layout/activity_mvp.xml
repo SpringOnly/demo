@@ -9,6 +9,7 @@
     tools:context="com.example.mvp.view.MVPActivity">
 
     <Button
+        android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="getData"
@@ -69,7 +70,6 @@
         android:layout_margin="@dimen/dp_10"
         android:textColor="@color/black"
         android:textSize="@dimen/sp_15" />
-
 
 
 </LinearLayout>
