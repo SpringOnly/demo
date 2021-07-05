@@ -1,5 +1,6 @@
 package com.example.mvp.view;
 
+import android.provider.SyncStateContract;
 import android.view.View;
 import android.widget.Toast;
 
@@ -50,12 +51,11 @@ public class MVPActivity extends BaseActivity<ActivityMvpBinding> implements MVP
     protected void initView() {
         mMVPPresenter = new MVPPresenter(this);
         Binding.mvpResult.setText(String.valueOf(age));
-        DynamicCircleDemo.setOnTouch(Binding.mainActivity, Binding.DynamicCircle);
     }
 
     @Override
     protected void initListener() {
-        
+
     }
 
     @Override
@@ -105,6 +105,7 @@ public class MVPActivity extends BaseActivity<ActivityMvpBinding> implements MVP
         sfs.addEventListener(SFSEvent.ROOM_JOIN, this::MessageCallBack);
         sfs.addEventListener(SFSEvent.EXTENSION_RESPONSE, this::MessageCallBack);
         sfs.addEventListener(SFSEvent.ADMIN_MESSAGE, this::MessageCallBack);
+        sfs.addEventListener(SFSEvent.PUBLIC_MESSAGE, this::MessageCallBack);
 
         sfs.connect(cfg);
 //        if (mTimer == null) {
@@ -184,6 +185,10 @@ public class MVPActivity extends BaseActivity<ActivityMvpBinding> implements MVP
                 break;
             case SFSEvent.EXTENSION_RESPONSE:
                 Binding.MessageResult.append(" EXTENSION_RESPONSE \n");
+                break;
+            case SFSEvent.PUBLIC_MESSAGE:
+                String message = (String) evt.getArguments().get("message");
+                Binding.MessageResult.append(message + "  \n");
                 break;
             case SFSEvent.ADMIN_MESSAGE:
                 String commandObject = (String) evt.getArguments().get("message");
