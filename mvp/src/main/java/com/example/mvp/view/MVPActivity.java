@@ -60,10 +60,6 @@ public class MVPActivity extends BaseActivity<ActivityMvpBinding> implements MVP
 
     @Override
     protected void initData() {
-
-        /**
-         * aaaaaaaaa
-         */
         Binding.send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
