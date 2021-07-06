@@ -108,15 +108,6 @@ public class MVPActivity extends BaseActivity<ActivityMvpBinding> implements MVP
         sfs.addEventListener(SFSEvent.PUBLIC_MESSAGE, this::MessageCallBack);
 
         sfs.connect(cfg);
-//        if (mTimer == null) {
-//            mTimer = new Timer();
-//        }
-//        mTimer.scheduleAtFixedRate(new TimerTask() {
-//            @Override
-//            public void run() {
-//                sfs.send(new ExtensionRequest("ACTION_HEARTBEAT", new SFSObject()));
-//            }
-//        }, INTERVAL_HEARTBEAT, INTERVAL_HEARTBEAT);
     }
 
     private void MessageCallBack(BaseEvent evt) {
@@ -187,6 +178,7 @@ public class MVPActivity extends BaseActivity<ActivityMvpBinding> implements MVP
                 Binding.MessageResult.append(" EXTENSION_RESPONSE \n");
                 break;
             case SFSEvent.PUBLIC_MESSAGE:
+
                 String message = (String) evt.getArguments().get("message");
                 Binding.MessageResult.append(message + "  \n");
                 break;
