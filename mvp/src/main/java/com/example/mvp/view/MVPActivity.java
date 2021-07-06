@@ -1,12 +1,16 @@
 package com.example.mvp.view;
 
+import android.animation.ValueAnimator;
 import android.provider.SyncStateContract;
 import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.animation.LinearInterpolator;
 import android.widget.Toast;
 
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.blankj.utilcode.util.SizeUtils;
 import com.blankj.utilcode.util.ThreadUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.example.commonlibrary.base.BaseActivity;
