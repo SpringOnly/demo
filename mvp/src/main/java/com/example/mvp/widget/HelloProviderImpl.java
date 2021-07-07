@@ -9,7 +9,9 @@ import com.example.commonlibrary.base.arouter.ARouterConstant;
 import com.example.commonlibrary.router_provider.HelloProvider;
 import com.example.commonlibrary.util.AppContextUtil;
 
-
+/**
+ * ARouter跨模块调用
+ */
 @Route(path = ARouterConstant.HelloService)
 public class HelloProviderImpl implements HelloProvider {
     @Override

@@ -19,6 +19,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * 音乐播放动画
+ */
 public class VoicePlayingIcon extends View {
 
     //画笔

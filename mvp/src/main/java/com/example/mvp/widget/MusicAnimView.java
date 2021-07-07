@@ -18,7 +18,10 @@ import com.blankj.utilcode.util.SizeUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayingView extends View {
+/**
+ * 音乐播放动画
+ */
+public class MusicAnimView extends View {
 
     private Paint mPaintTop;
     private Paint mPaintBottom;
@@ -28,26 +31,27 @@ public class PlayingView extends View {
     //线条的高度
     private final int LineMaxHeight = SizeUtils.dp2px(15);
     //线条最低高度
-    private int LineMinHeight = SizeUtils.dp2px(3);
+    private final int LineMinHeight = SizeUtils.dp2px(3);
     //线条间距
     private final int LineInterval = SizeUtils.dp2px(2);
+    //线条圆角的大小
+    private final int LineCircleRadius = SizeUtils.dp2px(3);
     //线条的数量
-    private int LineNumber = 3;
-
-    List<Point> mPointList;
+    private final int LineNumber = 3;
     //view的中间位置
     private int centerY;
     //是否正在播放中
     private boolean isPlaying = false;
 
+    List<Point> mPointList;
     ValueAnimator valueAnimator;
 
-    public PlayingView(Context context) {
+    public MusicAnimView(Context context) {
         super(context);
         initView();
     }
 
-    public PlayingView(Context context, @Nullable AttributeSet attrs) {
+    public MusicAnimView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         initView();
     }
@@ -62,7 +66,6 @@ public class PlayingView extends View {
         mPaintBottom.setStrokeWidth(LineWidth);
         mPaintBottom.setColor(Color.RED);
         mPaintBottom.setAntiAlias(true);
-
 
         mPointList = new ArrayList<>();
         for (int i = 0; i < LineNumber; i++) {
@@ -117,8 +120,8 @@ public class PlayingView extends View {
         int LineLeft = 0;
         for (int i = 0; i < mPointList.size(); i++) {
             int height = mPointList.get(i).getLineHeight();
-            canvas.drawRoundRect(LineLeft, 0, LineLeft + LineWidth, -height, 5, 5, mPaintTop);
-            canvas.drawRoundRect(LineLeft, 0, LineLeft + LineWidth, height, 5, 5, mPaintBottom);
+            canvas.drawRoundRect(LineLeft, 0, LineLeft + LineWidth, -height, LineCircleRadius, LineCircleRadius, mPaintTop);
+            canvas.drawRoundRect(LineLeft, 0, LineLeft + LineWidth, height, LineCircleRadius, LineCircleRadius, mPaintBottom);
 
             canvas.drawRect(LineLeft, 0, LineLeft + LineWidth, -LineMinHeight, mPaintTop);
             canvas.drawRect(LineLeft, 0, LineLeft + LineWidth, LineMinHeight, mPaintBottom);
@@ -126,8 +129,19 @@ public class PlayingView extends View {
         }
     }
 
+    @Override
+    protected void onVisibilityChanged(@NonNull View changedView, int visibility) {
+        super.onVisibilityChanged(changedView, visibility);
+        if (visibility == VISIBLE) {
+            isPlaying = true;
+            startAnim();
+        } else {
+            isPlaying = false;
+            stopAnim();
+        }
+    }
+
     public void startAnim() {
-        isPlaying = true;
         if (valueAnimator == null) {
             valueAnimator = new ValueAnimator();
         }
@@ -158,19 +172,8 @@ public class PlayingView extends View {
 
     public void stopAnim() {
         if (valueAnimator != null) {
-            isPlaying = false;
             valueAnimator.cancel();
             valueAnimator = null;
-        }
-    }
-
-    @Override
-    protected void onVisibilityChanged(@NonNull View changedView, int visibility) {
-        super.onVisibilityChanged(changedView, visibility);
-        if (visibility == VISIBLE) {
-            startAnim();
-        } else {
-            stopAnim();
         }
     }
 

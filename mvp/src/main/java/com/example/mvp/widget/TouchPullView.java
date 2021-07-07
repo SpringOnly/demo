@@ -13,6 +13,9 @@ import androidx.annotation.Nullable;
 
 import com.example.commonlibrary.util.LogUtil;
 
+/**
+ * view高度跟随手势
+ */
 public class TouchPullView extends View {
 
     private Paint mPaint;
