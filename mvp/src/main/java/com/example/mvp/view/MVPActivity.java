@@ -20,6 +20,7 @@ import com.example.mvc.databinding.ActivityMvpBinding;
 import com.example.mvp.demo.DynamicCircleDemo;
 import com.example.mvp.presenter.MVPPresenter;
 import com.example.mvp.presenter.contract.MVPBannerContract;
+import com.example.mvp.widget.PlayingView;
 import com.smartfoxserver.v2.entities.data.SFSObject;
 
 import java.util.Timer;

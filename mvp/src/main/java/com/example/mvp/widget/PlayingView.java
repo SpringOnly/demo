@@ -8,26 +8,39 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.view.animation.LinearInterpolator;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.blankj.utilcode.util.SizeUtils;
-import com.example.commonlibrary.util.LogUtil;
 
-public class PlayingView extends View implements ViewTreeObserver.OnGlobalLayoutListener {
+import java.util.ArrayList;
+import java.util.List;
+
+public class PlayingView extends View {
 
     private Paint mPaintTop;
     private Paint mPaintBottom;
-    //线条的宽度
-    private int LineWidth = SizeUtils.dp2px(2);
-    private int LineHeight =  SizeUtils.dp2px(35);
 
+    //线条的宽度
+    private final int LineWidth = SizeUtils.dp2px(2);
+    //线条的高度
+    private final int LineMaxHeight = SizeUtils.dp2px(15);
+    //线条最低高度
+    private int LineMinHeight = SizeUtils.dp2px(3);
+    //线条间距
+    private final int LineInterval = SizeUtils.dp2px(2);
+    //线条的数量
+    private int LineNumber = 3;
+
+    List<Point> mPointList;
     //view的中间位置
     private int centerY;
-    private int DrawLineHeight;
+    //是否正在播放中
+    private boolean isPlaying = false;
 
+    ValueAnimator valueAnimator;
 
     public PlayingView(Context context) {
         super(context);
@@ -50,7 +63,14 @@ public class PlayingView extends View implements ViewTreeObserver.OnGlobalLayout
         mPaintBottom.setColor(Color.RED);
         mPaintBottom.setAntiAlias(true);
 
-        getViewTreeObserver().addOnGlobalLayoutListener(this);
+
+        mPointList = new ArrayList<>();
+        for (int i = 0; i < LineNumber; i++) {
+            Point point = new Point();
+            point.setLineHeight(0);
+            mPointList.add(point);
+        }
+        post(this::startAnim);
     }
 
     @Override
@@ -70,7 +90,7 @@ public class PlayingView extends View implements ViewTreeObserver.OnGlobalLayout
                 width = widthSize;
                 break;
             case MeasureSpec.AT_MOST:
-                width = Math.min(LineWidth, widthSize);
+                width = (LineWidth + LineInterval) * LineNumber;
                 break;
             case MeasureSpec.UNSPECIFIED:
                 break;
@@ -81,7 +101,7 @@ public class PlayingView extends View implements ViewTreeObserver.OnGlobalLayout
                 height = heightSize;
                 break;
             case MeasureSpec.AT_MOST:
-                height = Math.min(LineHeight, heightSize);
+                height = Math.min(LineMaxHeight, heightSize);
                 break;
             case MeasureSpec.UNSPECIFIED:
                 break;
@@ -94,23 +114,76 @@ public class PlayingView extends View implements ViewTreeObserver.OnGlobalLayout
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.translate(0, centerY);
-        canvas.drawRect(0, 0, LineWidth, -DrawLineHeight, mPaintTop);
-        canvas.drawRect(0, 0, LineWidth, DrawLineHeight, mPaintBottom);
+        int LineLeft = 0;
+        for (int i = 0; i < mPointList.size(); i++) {
+            int height = mPointList.get(i).getLineHeight();
+            canvas.drawRoundRect(LineLeft, 0, LineLeft + LineWidth, -height, 5, 5, mPaintTop);
+            canvas.drawRoundRect(LineLeft, 0, LineLeft + LineWidth, height, 5, 5, mPaintBottom);
+
+            canvas.drawRect(LineLeft, 0, LineLeft + LineWidth, -LineMinHeight, mPaintTop);
+            canvas.drawRect(LineLeft, 0, LineLeft + LineWidth, LineMinHeight, mPaintBottom);
+            LineLeft += LineWidth + LineInterval;
+        }
     }
 
-
-    @Override
-    public void onGlobalLayout() {
-        int HalfHeight = getHeight() / 2;
-        ValueAnimator valueAnimator = ValueAnimator.ofInt(5, HalfHeight);
+    public void startAnim() {
+        isPlaying = true;
+        if (valueAnimator == null) {
+            valueAnimator = new ValueAnimator();
+        }
+        valueAnimator.setIntValues(LineMinHeight, centerY);
         valueAnimator.setDuration(800);
         valueAnimator.setRepeatMode(ValueAnimator.REVERSE);
         valueAnimator.setRepeatCount(ValueAnimator.INFINITE);
         valueAnimator.setInterpolator(new LinearInterpolator());
-        valueAnimator.addUpdateListener(valueAnimators -> {
-            DrawLineHeight = (int) valueAnimators.getAnimatedValue();
+        valueAnimator.addUpdateListener(animator -> {
+            if (!isPlaying) {
+                return;
+            }
+            //计算线条跳动的规律
+            int MeasureHeight = (int) animator.getAnimatedValue();
+            for (int i = 0; i < mPointList.size(); i++) {
+                if (i == 0 || i == 2) {
+                    int i2 = centerY - MeasureHeight + LineMinHeight;
+                    mPointList.get(i).setLineHeight(i2);
+                }
+                if (i == 1) {
+                    mPointList.get(i).setLineHeight(MeasureHeight);
+                }
+            }
             postInvalidate();
         });
         valueAnimator.start();
     }
+
+    public void stopAnim() {
+        if (valueAnimator != null) {
+            isPlaying = false;
+            valueAnimator.cancel();
+            valueAnimator = null;
+        }
+    }
+
+    @Override
+    protected void onVisibilityChanged(@NonNull View changedView, int visibility) {
+        super.onVisibilityChanged(changedView, visibility);
+        if (visibility == VISIBLE) {
+            startAnim();
+        } else {
+            stopAnim();
+        }
+    }
+
+    public static class Point {
+        private int LineHeight;
+
+        public int getLineHeight() {
+            return LineHeight;
+        }
+
+        public void setLineHeight(int lineHeight) {
+            LineHeight = lineHeight;
+        }
+    }
 }
+
