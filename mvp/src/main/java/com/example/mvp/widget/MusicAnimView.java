@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.blankj.utilcode.util.SizeUtils;
+import com.example.commonlibrary.util.LogUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -141,7 +142,7 @@ public class MusicAnimView extends View {
         }
     }
 
-    public void startAnim() {
+    private void startAnim() {
         if (valueAnimator == null) {
             valueAnimator = new ValueAnimator();
         }
@@ -170,14 +171,20 @@ public class MusicAnimView extends View {
         valueAnimator.start();
     }
 
-    public void stopAnim() {
+    private void stopAnim() {
         if (valueAnimator != null) {
             valueAnimator.cancel();
             valueAnimator = null;
         }
     }
 
-    public static class Point {
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        stopAnim();
+    }
+
+    private static class Point {
         private int LineHeight;
 
         public int getLineHeight() {
