@@ -8,7 +8,6 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.commonlibrary.base.BaseActivity;
 import com.example.commonlibrary.base.arouter.ARouterConstant;
 import com.example.mvc.databinding.ActivityMvpBinding;
-import com.example.mvp.demo.HuaweiAnalyseDemo;
 import com.example.mvp.presenter.MVPPresenter;
 import com.example.mvp.presenter.contract.MVPBannerContract;
 
@@ -34,7 +33,7 @@ public class MVPActivity extends BaseActivity<ActivityMvpBinding> implements MVP
 
     @Override
     protected void initListener() {
-        HuaweiAnalyseDemo.queryChannel(this);
+
     }
 
     @Override
