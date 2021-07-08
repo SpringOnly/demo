@@ -5,19 +5,12 @@ import com.example.commonlibrary.base.CallBack;
 import com.example.commonlibrary.base.api.Api;
 import com.example.mvp.presenter.contract.MVPBannerContract;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.io.IOException;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 import okhttp3.ResponseBody;
 
 public class MVPModel implements MVPBannerContract.MVPModel {

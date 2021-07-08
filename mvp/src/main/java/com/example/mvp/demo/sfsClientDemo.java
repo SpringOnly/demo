@@ -1,22 +1,9 @@
 package com.example.mvp.demo;
 
 
-import android.view.View;
-
-import com.blankj.utilcode.util.ThreadUtils;
-import com.blankj.utilcode.util.ToastUtils;
-import com.smartfoxserver.v2.entities.data.SFSObject;
-
 import java.util.Timer;
 
 import sfs2x.client.SmartFox;
-import sfs2x.client.core.BaseEvent;
-import sfs2x.client.core.SFSEvent;
-import sfs2x.client.entities.SFSUser;
-import sfs2x.client.requests.ExtensionRequest;
-import sfs2x.client.requests.JoinRoomRequest;
-import sfs2x.client.requests.LoginRequest;
-import sfs2x.client.util.ClientDisconnectionReason;
 import sfs2x.client.util.ConfigData;
 
 public class sfsClientDemo {

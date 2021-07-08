@@ -1,11 +1,8 @@
 package com.example.mvp.demo;
 
 
-import android.text.TextUtils;
-
 import com.blankj.utilcode.util.EncodeUtils;
 import com.blankj.utilcode.util.EncryptUtils;
-import com.blankj.utilcode.util.NetworkUtils;
 import com.example.commonlibrary.util.LogUtil;
 import com.example.mvp.util.BaseUtils;
 

@@ -11,7 +11,6 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.view.View;
 
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 

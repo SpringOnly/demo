@@ -14,7 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.blankj.utilcode.util.SizeUtils;
-import com.example.commonlibrary.util.LogUtil;
 
 import java.util.ArrayList;
 import java.util.List;

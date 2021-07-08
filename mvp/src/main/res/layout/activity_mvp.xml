@@ -29,10 +29,5 @@
         android:text="Add"
         android:textAllCaps="false" />
 
-    <com.example.mvp.widget.MusicAnimView
-        android:id="@+id/playView"
-        android:layout_width="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_height="wrap_content" />
 
 </LinearLayout>
