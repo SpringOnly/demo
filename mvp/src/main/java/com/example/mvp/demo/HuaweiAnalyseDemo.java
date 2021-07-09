@@ -21,11 +21,9 @@ public class HuaweiAnalyseDemo {
     //在广告位点击安装按钮的时间（毫秒）
     private static final int INDEX_ENTER_AG_TIME = 1;
     //应用安装完成的时间（毫秒）
-    private static final int INDEX_START_DOWNLOAD_TIME = 2;
+    private static final int INDEX_INSTALLED_FINISH_TIME = 2;
     //归因信息
     private static final int INDEX_TRACKID = 4;
-
-    private static final int INDEX_REFERRER = 5;
 
     private static String trackId;
 
@@ -40,12 +38,13 @@ public class HuaweiAnalyseDemo {
                 cursor.moveToNext();
                 if (cursor.getColumnCount() > INDEX_TRACKID) {
                     //华为商店10.5.0.300 及之后版本
+                    LogUtil.e( "enter appgallery time=" + cursor.getString(INDEX_ENTER_AG_TIME));
+                    LogUtil.e( "install time=" + cursor.getString(INDEX_INSTALLED_FINISH_TIME));
+                    LogUtil.e( "track id=" + cursor.getString(INDEX_TRACKID));
                     trackId = cursor.getString(INDEX_TRACKID);
-                } else if (cursor.getColumnCount() > INDEX_START_DOWNLOAD_TIME) {
-                    //兼容旧版本 //todo 待修改
-                    trackId = cursor.getString(INDEX_REFERRER);
                 } else {
-                    LogUtil.e("不支持归因信息查询");
+                    //不支持归因信息查询
+                    LogUtil.e("appgallery not support");
                 }
             }
         } finally {

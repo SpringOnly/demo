@@ -8,6 +8,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.commonlibrary.base.BaseActivity;
 import com.example.commonlibrary.base.arouter.ARouterConstant;
 import com.example.mvc.databinding.ActivityMvpBinding;
+import com.example.mvp.demo.crp.ApplyTestDemo;
 import com.example.mvp.presenter.MVPPresenter;
 import com.example.mvp.presenter.contract.MVPBannerContract;
 
