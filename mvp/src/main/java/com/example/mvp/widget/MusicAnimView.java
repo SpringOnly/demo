@@ -20,6 +20,8 @@ import java.util.List;
 
 /**
  * 音乐播放动画
+ *
+ *  @author Created by LJP on 2021/7/2.
  */
 public class MusicAnimView extends View {
 

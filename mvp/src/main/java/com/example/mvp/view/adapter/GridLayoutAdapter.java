@@ -19,7 +19,7 @@ public class GridLayoutAdapter extends BaseAdapter<GridlayoutBean, BaseViewHolde
     private List<GridlayoutBean> mGridlayoutBeans;
 
     public GridLayoutAdapter(@NonNull @NotNull Context context) {
-        super(context, R.layout.mmd_item_grid_image);
+        super(context, R.layout.item_text);
     }
 
     public void setData(List<GridlayoutBean> gridlayoutBeans) {
@@ -30,21 +30,21 @@ public class GridLayoutAdapter extends BaseAdapter<GridlayoutBean, BaseViewHolde
     @Override
     protected void bindView(BaseViewHolder helper, GridlayoutBean item) {
 
-        if (mGridlayoutBeans.size() < 5) {
-            if (helper.getAdapterPosition() == 0) {
-                helper.setGone(R.id.banner, true);
-                helper.setImageResource(R.id.banner, R.mipmap.ic_launcher);
-            } else {
-                helper.setGone(R.id.banner, false);
-            }
-        } else {
-            if (helper.getAdapterPosition() == 4) {
-                helper.setGone(R.id.banner, true);
-                helper.setImageResource(R.id.banner, R.mipmap.ic_launcher);
-            } else {
-                helper.setGone(R.id.banner, false);
-            }
-        }
-        helper.setText(R.id.item_text, item.getMessage());
+//        if (mGridlayoutBeans.size() < 5) {
+//            if (helper.getAdapterPosition() == 0) {
+//                helper.setGone(R.id.banner, true);
+//                helper.setImageResource(R.id.banner, R.mipmap.ic_launcher);
+//            } else {
+//                helper.setGone(R.id.banner, false);
+//            }
+//        } else {
+//            if (helper.getAdapterPosition() == 4) {
+//                helper.setGone(R.id.banner, true);
+//                helper.setImageResource(R.id.banner, R.mipmap.ic_launcher);
+//            } else {
+//                helper.setGone(R.id.banner, false);
+//            }
+//        }
+//        helper.setText(R.id.item_text, item.getMessage());
     }
 }
