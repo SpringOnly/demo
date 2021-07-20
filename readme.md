@@ -10,3 +10,7 @@ CommonLibrary(基类库) : 属于功能组件，提供业务组件需要的通�
 跨模块通信ARouter自带的IProvider可以参考CommonLibrary->router_provider
 ARouter常量 ARouter拦截器 ARouter降级策略可参考CommonLibrary->ARouter
 ARouter在线文档 https://github.com/alibaba/ARouter/blob/master/README_CN.md
+
+key store password:66668888
+key alias:key0
+key password:66668888
