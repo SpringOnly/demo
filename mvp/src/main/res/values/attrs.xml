@@ -54,4 +54,5 @@
         <attr name="text_typeface" format="string" />
 
     </declare-styleable>
+
 </resources>

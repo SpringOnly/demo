@@ -32,15 +32,18 @@ public class HuaweiAnalyseDemo {
         Uri uri = Uri.parse(url);
         String[] packageName = new String[]{packName};
         Cursor cursor = null;
+//        if (INDEX_ENTER_AG_TIME == 0) {
+//            return "600441660";
+//        }
         try {
             cursor = contentResolver.query(uri, null, null, packageName, null);
             if (cursor != null) {
                 cursor.moveToNext();
                 if (cursor.getColumnCount() > INDEX_TRACKID) {
                     //华为商店10.5.0.300 及之后版本
-                    LogUtil.e( "enter appgallery time=" + cursor.getString(INDEX_ENTER_AG_TIME));
-                    LogUtil.e( "install time=" + cursor.getString(INDEX_INSTALLED_FINISH_TIME));
-                    LogUtil.e( "track id=" + cursor.getString(INDEX_TRACKID));
+                    LogUtil.e("enter appgallery time=" + cursor.getString(INDEX_ENTER_AG_TIME));
+                    LogUtil.e("install time=" + cursor.getString(INDEX_INSTALLED_FINISH_TIME));
+                    LogUtil.e("track id=" + cursor.getString(INDEX_TRACKID));
                     trackId = cursor.getString(INDEX_TRACKID);
                 } else {
                     //不支持归因信息查询

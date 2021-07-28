@@ -23,9 +23,11 @@
         android:includeFontPadding="false"
         android:text="asadasdasdasdas" />
 
-    <com.example.mvp.widget.SphereView
-        android:id="@+id/SphereView"
-        android:layout_width="@dimen/dp_120"
-        android:layout_height="@dimen/dp_120" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:scrollbars="none"
+        android:overScrollMode="never"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

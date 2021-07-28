@@ -44,7 +44,7 @@ dependencies {
         implementation project(':mvc')
         implementation project(':mvp')
         implementation project(':mvvm')
-        ////集成模式下需要编译器生成路由通信的代码
+        //集成模式下需要编译器生成路由通信的代码
         annotationProcessor rootProject.ext.dependencies.arouter_compiler
     }
 }

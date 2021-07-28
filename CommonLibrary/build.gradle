@@ -58,7 +58,5 @@ android {
         api "com.alibaba:arouter-api:1.5.1"
         //adapter通用适配器
         api "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.42"
-        //美团打包
-        api 'com.meituan.android.walle:library:1.1.7'
     }
 }

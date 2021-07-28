@@ -20,7 +20,6 @@ public class SnapHelperAdapter extends BaseQuickAdapter<SnapHelperBean, BaseView
 
     @Override
     protected void convert(BaseViewHolder helper, SnapHelperBean item) {
-        helper.getAdapterPosition();
         helper.setImageResource(R.id.item_view, item.getImage());
     }
 
