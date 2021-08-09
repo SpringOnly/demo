@@ -1,0 +1,7 @@
+
+def projectName = project.name
+def projectSmall = projectName.substring 4, projectName.length()
+
+android {
+    resourcePrefix projectSmall + '_'
+}

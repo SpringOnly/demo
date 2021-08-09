@@ -46,20 +46,7 @@ public class MVPActivity extends BaseActivity<ActivityMvpBinding> implements MVP
 
     @Override
     protected void initListener() {
-//        PagerSnapHelper pagerSnapHelper = new PagerSnapHelper();
-//        pagerSnapHelper.attachToRecyclerView(Binding.recycler);
-        SnapHelperAdapter snapHelperAdapter = new SnapHelperAdapter();
-        Binding.recycler.setAdapter(snapHelperAdapter);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        Binding.recycler.setLayoutManager(layoutManager);
 
-        List<SnapHelperBean> beanList = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            SnapHelperBean snapHelperBean = new SnapHelperBean();
-            snapHelperBean.setImage(R.mipmap.image);
-            beanList.add(snapHelperBean);
-        }
-        snapHelperAdapter.setNewData(beanList);
     }
 
     @Override
