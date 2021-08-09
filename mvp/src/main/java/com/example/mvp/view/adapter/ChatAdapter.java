@@ -6,12 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.example.mvc.R;
-import com.example.mvc.databinding.TypeItemLeftBinding;
-import com.example.mvc.databinding.TypeItemRightBinding;
+import com.example.mvp.R;
 import com.example.mvp.base.BaseMultiAdapter;
 import com.example.mvp.bean.TypeLeftBean;
 import com.example.mvp.bean.TypeRightBean;
+import com.example.mvp.databinding.TypeItemLeftBinding;
+import com.example.mvp.databinding.TypeItemRightBinding;
 
 public class ChatAdapter extends BaseMultiAdapter<Object, BaseViewHolder> {
 

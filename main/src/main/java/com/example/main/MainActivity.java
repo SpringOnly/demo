@@ -68,17 +68,15 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
                                 LogUtil.e("MainActivity：" + "onArrival : " + postcard.getPath());
                             }
                         }));
-        Binding.mvvm.setOnClickListener(v -> {
-            ARouter.getInstance().build(ARouterConstant.MVVM)
-                    .navigation(MainActivity.this, 100);
-//        ((HelloService)ARouter
+
+        Binding.jumpMoudel.setOnClickListener(v ->
+                mProvider.sayHello("jack"));
+
+        //        ((HelloService)ARouter
 //                .getInstance()
 //                .build(ARouterConstant.HelloService)
 //                .navigation())
 //                .sayHello("jack name");
-        });
-        Binding.jumpMoudel.setOnClickListener(v ->
-                mProvider.sayHello("jack"));
     }
 
     @Override

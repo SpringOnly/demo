@@ -1,50 +1,9 @@
 apply plugin: 'com.android.application'
-
-android {
-    compileSdkVersion rootProject.ext.android.compileSdkVersion
-    buildToolsVersion rootProject.ext.android.buildToolsVersion
-
-    defaultConfig {
-        applicationId "com.example.java"
-        minSdkVersion rootProject.ext.android.minSdkVersion
-        targetSdkVersion rootProject.ext.android.targetSdkVersion
-        versionCode rootProject.ext.android.versionCode
-        versionName rootProject.ext.android.versionName
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        if (!rootProject.ext.isAlone) {
-            javaCompileOptions {
-                annotationProcessorOptions {
-                    arguments = [AROUTER_MODULE_NAME: project.getName()]
-                }
-            }
-        }
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    buildFeatures {
-        dataBinding = true
-        viewBinding = true
-    }
-}
+apply from: rootProject.file('gradle/module.gradle')
 
 dependencies {
     implementation project(':CommonLibrary')
-    if (!rootProject.ext.isAlone) {
-        implementation project(':main')
-        implementation project(':mvc')
-        implementation project(':mvp')
-        implementation project(':mvvm')
-        //集成模式下需要编译器生成路由通信的代码
-        annotationProcessor rootProject.ext.dependencies.arouter_compiler
-    }
+    implementation project(':main')
+    implementation project(':mvc')
+    implementation project(':mvp')
 }

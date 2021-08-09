@@ -15,7 +15,7 @@ import com.example.commonlibrary.util.LogUtil;
 public class LoginDegradeService implements DegradeService {
     @Override
     public void onLost(Context context, Postcard postcard) {
-        ARouter.getInstance().build(ARouterConstant.MVVM).navigation();
+        ARouter.getInstance().build(ARouterConstant.MVC).navigation();
     }
 
     @Override

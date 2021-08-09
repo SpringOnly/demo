@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import com.example.commonlibrary.base.BaseActivity;
 import com.example.commonlibrary.util.LogUtil;
-import com.example.mvc.databinding.ActivityMain2Binding;
+import com.example.mvp.databinding.ActivityMain2Binding;
 import com.example.mvp.bean.RouterBean;
 import com.example.mvp.util.AppSingle;
 

@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.LinearSnapHelper;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.example.mvc.R;
+import com.example.mvp.R;
 import com.example.mvp.bean.SnapHelperBean;
 
 import java.util.ArrayList;

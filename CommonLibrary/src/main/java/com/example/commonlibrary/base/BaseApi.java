@@ -4,7 +4,6 @@ import android.util.Log;
 
 
 import com.example.commonlibrary.BuildConfig;
-import com.example.commonlibrary.base.api.SSLSocketClient;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -55,8 +54,6 @@ public class BaseApi {
         httpClientBuilder.connectTimeout(15, TimeUnit.SECONDS);
         httpClientBuilder.readTimeout(15, TimeUnit.SECONDS);
         httpClientBuilder.writeTimeout(15, TimeUnit.SECONDS);
-        httpClientBuilder.sslSocketFactory(SSLSocketClient.getSSLSocketFactory());
-        httpClientBuilder.hostnameVerifier(SSLSocketClient.getHostnameVerifier());
         httpClientBuilder.proxy(Proxy.NO_PROXY);
         httpClientBuilder.hostnameVerifier((hostname, session) -> true);
         httpClientBuilder.addInterceptor(logInterceptor);

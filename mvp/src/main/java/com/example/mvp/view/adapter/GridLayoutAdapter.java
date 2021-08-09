@@ -5,7 +5,7 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.example.mvc.R;
+import com.example.mvp.R;
 import com.example.mvp.base.BaseAdapter;
 import com.example.mvp.bean.GridlayoutBean;
 

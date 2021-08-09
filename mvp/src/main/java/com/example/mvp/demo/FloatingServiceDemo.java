@@ -9,9 +9,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.example.mvc.R;
 
 import static android.content.Context.WINDOW_SERVICE;
+
+import com.example.mvp.R;
 
 public class FloatingServiceDemo {
 

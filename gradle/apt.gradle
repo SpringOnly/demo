@@ -1,0 +1,14 @@
+
+android {
+    defaultConfig {
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+}
+
+dependencies {
+    annotationProcessor 'com.alibaba:arouter-compiler:1.5.1'
+}
