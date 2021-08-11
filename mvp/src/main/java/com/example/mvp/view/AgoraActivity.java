@@ -75,18 +75,16 @@ public class AgoraActivity extends BaseActivity<ActivityAgoraBinding> {
         setupLocalVideo(mRtcEngine);
     }
 
-    private SurfaceView LocalView;
-
     private void setupLocalVideo(RtcEngine mRtcEngine) {
         //启用视频模块
         mRtcEngine.enableVideo();
         //启用音频模块
         mRtcEngine.enableAudio();
 
-        LocalView = new SurfaceView(this);
-        LocalView.setZOrderMediaOverlay(true);
-        Binding.localVideoViewContainer.addView(LocalView);
-        VideoCanvas videoCanvas = new VideoCanvas(LocalView, VideoCanvas.RENDER_MODE_ADAPTIVE, 0);
+        SurfaceView localView = new SurfaceView(this);
+        localView.setZOrderMediaOverlay(true);
+        Binding.localVideoViewContainer.addView(localView);
+        VideoCanvas videoCanvas = new VideoCanvas(localView, VideoCanvas.RENDER_MODE_ADAPTIVE, 0);
         mRtcEngine.setupLocalVideo(videoCanvas);
         mRtcEngine.startPreview();
         joinChannel(mRtcEngine);

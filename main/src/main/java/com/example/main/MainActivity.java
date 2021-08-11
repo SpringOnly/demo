@@ -81,6 +81,10 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
         Binding.agora.setOnClickListener(v ->
                 ARouter.getInstance().build(ARouterConstant.AGORA)
                         .navigation());
+
+        Binding.faceUnity.setOnClickListener(v ->
+                ARouter.getInstance().build(ARouterConstant.FACE_UNITY)
+                        .navigation());
     }
 
     @Override

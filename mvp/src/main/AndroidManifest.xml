@@ -2,10 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mvp">
 
-
-  <application>
-      <activity android:name=".view.MVPActivity" />
-      <activity android:name=".view.AgoraActivity" />
-  </application>
+    <application>
+        <activity
+            android:name=".view.FaceUnityActivity"
+            android:exported="true" />
+        <activity android:name=".view.MVPActivity" />
+        <activity android:name=".view.AgoraActivity" />
+    </application>
 
 </manifest>

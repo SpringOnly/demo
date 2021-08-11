@@ -19,6 +19,12 @@
         android:text="MVP" />
 
     <Button
+        android:id="@+id/jumpMoudel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="跨模块调用MVP中的方法" />
+
+    <Button
         android:id="@+id/agora"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,9 +32,11 @@
         android:text="agora" />
 
     <Button
-        android:id="@+id/jumpMoudel"
+        android:id="@+id/faceUnity"
+        android:text="FaceUnity"
+        android:textAllCaps="false"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="跨模块调用MVP中的方法" />
+        android:layout_height="wrap_content" />
+
 
 </LinearLayout>

@@ -9,6 +9,7 @@ public class ARouterConstant {
 
     public static final String MVP = BaseMVP + "/MVP";
     public static final String AGORA = BaseMVP + "/agora";
+    public static final String FACE_UNITY = BaseMVP + "/faceUnity";
 
     public static final String HelloService = "/service/helloservice";
 }
