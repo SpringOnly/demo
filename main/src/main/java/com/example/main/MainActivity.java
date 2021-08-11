@@ -77,6 +77,10 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 //                .build(ARouterConstant.HelloService)
 //                .navigation())
 //                .sayHello("jack name");
+
+        Binding.agora.setOnClickListener(v ->
+                ARouter.getInstance().build(ARouterConstant.AGORA)
+                        .navigation());
     }
 
     @Override
