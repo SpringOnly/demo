@@ -24,7 +24,6 @@ public class FaceUnityActivity extends BaseActivity<ActivityFaceUnityBinding> {
 
     @Override
     protected void initListener() {
-        Object o = new Object();
     }
 
     @Override
