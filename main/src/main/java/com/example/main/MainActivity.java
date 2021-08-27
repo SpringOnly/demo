@@ -1,6 +1,7 @@
 package com.example.main;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -39,7 +40,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
     @Override
     protected void initView() {
-
     }
 
     @Override

@@ -20,6 +20,7 @@ import com.example.mvp.presenter.MVPPresenter;
 import com.example.mvp.presenter.contract.MVPBannerContract;
 import com.example.mvp.util.AppSingle;
 import com.example.mvp.view.adapter.SnapHelperAdapter;
+import com.example.mvp.widget.CustomSnapHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +47,21 @@ public class MVPActivity extends BaseActivity<ActivityMvpBinding> implements MVP
 
     @Override
     protected void initListener() {
+        CustomSnapHelper pagerSnapHelper = new CustomSnapHelper();
+        pagerSnapHelper.attachToRecyclerView(Binding.recycler);
 
+        SnapHelperAdapter snapHelperAdapter = new SnapHelperAdapter();
+        Binding.recycler.setAdapter(snapHelperAdapter);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        Binding.recycler.setLayoutManager(layoutManager);
+
+        List<SnapHelperBean> beanList = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            SnapHelperBean snapHelperBean = new SnapHelperBean();
+            snapHelperBean.setImage(R.mipmap.image);
+            beanList.add(snapHelperBean);
+        }
+        snapHelperAdapter.setNewData(beanList);
     }
 
     @Override

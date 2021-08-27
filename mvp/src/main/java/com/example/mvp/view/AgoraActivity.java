@@ -2,6 +2,7 @@ package com.example.mvp.view;
 
 
 import android.Manifest;
+import android.animation.ObjectAnimator;
 import android.os.Build;
 import android.view.SurfaceView;
 import android.view.View;
@@ -16,6 +17,7 @@ import com.example.commonlibrary.base.BaseActivity;
 import com.example.commonlibrary.base.arouter.ARouterConstant;
 import com.example.mvp.databinding.ActivityAgoraBinding;
 
+import io.agora.mediaplayer.IMediaPlayer;
 import io.agora.rtc2.Constants;
 import io.agora.rtc2.IAudioEffectManager;
 import io.agora.rtc2.IRtcEngineEventHandler;
@@ -33,6 +35,22 @@ public class AgoraActivity extends BaseActivity<ActivityAgoraBinding> {
     @Override
     protected void initView() {
         checkSelfPermission();
+
+        final String SAMPLE_MOVIE_URL = "https://webdemo.agora.io/agora-web-showcase/examples/Agora-Custom-VideoSource-Web/assets/sample.mp4";
+
+        Binding.agoraPlayer.bindLifecycle(this);
+        Binding.agoraPlayer.setDataSource(SAMPLE_MOVIE_URL);
+        Binding.agoraPlayer.setVolume(100);
+        Binding.agoraPlayer.start();
+
+        Binding.btnMute.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ObjectAnimator translationX = ObjectAnimator.ofFloat(Binding.playRel, "translationY", 0, 500);
+                translationX.setDuration(2000);
+                translationX.start();
+            }
+        });
     }
 
     //检查权限
@@ -44,7 +62,7 @@ public class AgoraActivity extends BaseActivity<ActivityAgoraBinding> {
                     public void
                     onGranted() {
                         try {
-                            initEngineAndJoinChannel();
+//                            initEngineAndJoinChannel();
                         } catch (Exception e) {
                             e.printStackTrace();
                         }

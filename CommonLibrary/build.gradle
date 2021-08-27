@@ -28,14 +28,10 @@ dependencies {
     //adapter通用适配器
     api "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.42"
 
-
     //内存泄漏检测
 //    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
 //    configurations {
 //        debugImplementation.exclude group: "junit", module: "junit"
 //    }
-    api 'tv.danmaku.ijk.media:ijkplayer-java:0.8.8'
-    api 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.8.8'
-    api 'tv.danmaku.ijk.media:ijkplayer-exo:0.8.4'
-    api 'com.kk.taurus.playerbase:playerbase:3.4.2'
+
 }

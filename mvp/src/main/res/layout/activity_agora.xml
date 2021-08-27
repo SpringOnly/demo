@@ -26,6 +26,17 @@
     </FrameLayout>
 
     <RelativeLayout
+        android:id="@+id/playRel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <com.example.mvp.demo.AgoraPlayer
+            android:id="@+id/agoraPlayer"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_150" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
         android:id="@+id/control_panel"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_30"
