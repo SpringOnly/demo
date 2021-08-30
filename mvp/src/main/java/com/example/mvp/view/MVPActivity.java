@@ -21,6 +21,7 @@ import com.example.mvp.presenter.contract.MVPBannerContract;
 import com.example.mvp.util.AppSingle;
 import com.example.mvp.view.adapter.SnapHelperAdapter;
 import com.example.mvp.widget.CustomSnapHelper;
+import com.example.mvp.widget.GallerySnapHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +48,7 @@ public class MVPActivity extends BaseActivity<ActivityMvpBinding> implements MVP
 
     @Override
     protected void initListener() {
-        CustomSnapHelper pagerSnapHelper = new CustomSnapHelper();
+        GallerySnapHelper pagerSnapHelper = new GallerySnapHelper();
         pagerSnapHelper.attachToRecyclerView(Binding.recycler);
 
         SnapHelperAdapter snapHelperAdapter = new SnapHelperAdapter();
