@@ -6,7 +6,7 @@ import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.facade.annotation.Interceptor;
 import com.alibaba.android.arouter.facade.callback.InterceptorCallback;
 import com.alibaba.android.arouter.facade.template.IInterceptor;
-import com.example.commonlibrary.util.LogUtil;
+import com.example.commonlibrary.util.CommonLog;
 
 @Interceptor(priority = 2, name = "拦截器")
 public class TestInterceptor2 implements IInterceptor {
@@ -24,6 +24,6 @@ public class TestInterceptor2 implements IInterceptor {
 
     @Override
     public void init(Context context) {
-        LogUtil.e("priority = 2 ARouter 初始化");
+        CommonLog.e("priority = 2 ARouter 初始化");
     }
 }

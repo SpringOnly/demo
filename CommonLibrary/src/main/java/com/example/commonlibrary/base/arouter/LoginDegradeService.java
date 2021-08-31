@@ -6,7 +6,6 @@ import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.facade.service.DegradeService;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.example.commonlibrary.util.LogUtil;
 
 /**
  * 找不到路由地址的降级策略

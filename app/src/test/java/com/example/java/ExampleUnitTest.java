@@ -1,9 +1,5 @@
 package com.example.java;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
-import com.blankj.utilcode.util.ReflectUtils;
-import com.example.commonlibrary.util.LogUtil;
-
 import org.junit.Test;
 
 import static org.junit.Assert.*;

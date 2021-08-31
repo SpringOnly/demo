@@ -2,7 +2,7 @@ package com.example.mvp.bean;
 
 
 public class SnapHelperBean {
-    private int image;
+    private int background;
     private String content;
 
     public String getContent() {
@@ -13,11 +13,11 @@ public class SnapHelperBean {
         this.content = content;
     }
 
-    public int getImage() {
-        return image;
+    public int getBackground() {
+        return background;
     }
 
-    public void setImage(int image) {
-        this.image = image;
+    public void setBackground(int image) {
+        this.background = image;
     }
 }

@@ -25,6 +25,11 @@ import java.util.List;
  */
 public class MusicAnimView extends View {
 
+    @Override
+    public void setTranslationX(float translationX) {
+        super.setTranslationX(translationX);
+    }
+
     private Paint mPaintTop;
     private Paint mPaintBottom;
 

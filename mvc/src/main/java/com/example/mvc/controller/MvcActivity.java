@@ -6,7 +6,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.commonlibrary.base.BaseActivity;
 import com.example.commonlibrary.base.CallBack;
 import com.example.commonlibrary.base.arouter.ARouterConstant;
-import com.example.commonlibrary.util.LogUtil;
+import com.example.commonlibrary.util.CommonLog;
 import com.example.mvc.databinding.ActivityMvcBinding;
 import com.example.mvc.model.BannerModel;
 import com.example.mvc.model.impl.BannerModelImpl;
@@ -46,7 +46,7 @@ public class MvcActivity extends BaseActivity<ActivityMvcBinding> {
 
             @Override
             public void onError(String msg) {
-                LogUtil.e("onError");
+                CommonLog.e("onError");
             }
         });
 

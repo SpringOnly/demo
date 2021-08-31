@@ -16,7 +16,7 @@ import androidx.lifecycle.OnLifecycleEvent;
 
 
 import com.example.commonlibrary.base.BaseActivity;
-import com.example.commonlibrary.util.LogUtil;
+import com.example.commonlibrary.util.CommonLog;
 
 import io.agora.mediaplayer.IMediaPlayer;
 import io.agora.rtc2.IAgoraEventHandler;
@@ -120,7 +120,7 @@ public class AgoraPlayer extends FrameLayout implements LifecycleObserver {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     public void resume() {
-        LogUtil.e("ON_RESUME");
+        CommonLog.e("ON_RESUME");
         if (agoraMediaPlayerKit != null) {
             agoraMediaPlayerKit.play();
         }
@@ -128,7 +128,7 @@ public class AgoraPlayer extends FrameLayout implements LifecycleObserver {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
     public void pause() {
-        LogUtil.e("ON_PAUSE");
+        CommonLog.e("ON_PAUSE");
         if (agoraMediaPlayerKit != null) {
             agoraMediaPlayerKit.pause();
         }
@@ -136,7 +136,7 @@ public class AgoraPlayer extends FrameLayout implements LifecycleObserver {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     public void onDestroy() {
-        LogUtil.e("ON_DESTROY");
+        CommonLog.e("ON_DESTROY");
         agoraMediaPlayerKit = null;
         mMediaPlayerChange.cleanListener();
     }

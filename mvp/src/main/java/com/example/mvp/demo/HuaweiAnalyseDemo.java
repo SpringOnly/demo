@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.text.TextUtils;
 
-import com.example.commonlibrary.util.LogUtil;
+import com.example.commonlibrary.util.CommonLog;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -41,13 +41,13 @@ public class HuaweiAnalyseDemo {
                 cursor.moveToNext();
                 if (cursor.getColumnCount() > INDEX_TRACKID) {
                     //华为商店10.5.0.300 及之后版本
-                    LogUtil.e("enter appgallery time=" + cursor.getString(INDEX_ENTER_AG_TIME));
-                    LogUtil.e("install time=" + cursor.getString(INDEX_INSTALLED_FINISH_TIME));
-                    LogUtil.e("track id=" + cursor.getString(INDEX_TRACKID));
+                    CommonLog.e("enter appgallery time=" + cursor.getString(INDEX_ENTER_AG_TIME));
+                    CommonLog.e("install time=" + cursor.getString(INDEX_INSTALLED_FINISH_TIME));
+                    CommonLog.e("track id=" + cursor.getString(INDEX_TRACKID));
                     trackId = cursor.getString(INDEX_TRACKID);
                 } else {
                     //不支持归因信息查询
-                    LogUtil.e("appgallery not support");
+                    CommonLog.e("appgallery not support");
                 }
             }
         } finally {
@@ -55,16 +55,16 @@ public class HuaweiAnalyseDemo {
                 cursor.close();
             }
         }
-        LogUtil.e("trackId:" + trackId);
+        CommonLog.e("trackId:" + trackId);
         if (!TextUtils.isEmpty(trackId)) {
             try {
                 JSONObject jsonObject = new JSONObject(trackId);
                 String channel = jsonObject.getString("channel");
                 String callback = jsonObject.getString("callback");
                 String taskId = jsonObject.getString("taskid");
-                LogUtil.e("channel:" + channel);
-                LogUtil.e("callback:" + callback);
-                LogUtil.e("taskid:" + taskId);
+                CommonLog.e("channel:" + channel);
+                CommonLog.e("callback:" + callback);
+                CommonLog.e("taskid:" + taskId);
             } catch (JSONException e) {
                 e.printStackTrace();
             }

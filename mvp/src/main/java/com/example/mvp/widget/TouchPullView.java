@@ -10,7 +10,7 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
-import com.example.commonlibrary.util.LogUtil;
+import com.example.commonlibrary.util.CommonLog;
 
 /**
  * view高度跟随手势
@@ -111,7 +111,7 @@ public class TouchPullView extends View {
     public void setProgress(float progress) {
         mProgress = progress;
         requestLayout();
-        LogUtil.e("progress:" + progress);
+        CommonLog.e("progress:" + progress);
     }
 
     private void initBezierView() {

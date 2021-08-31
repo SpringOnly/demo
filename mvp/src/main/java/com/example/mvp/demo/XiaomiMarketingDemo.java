@@ -3,7 +3,7 @@ package com.example.mvp.demo;
 
 import com.blankj.utilcode.util.EncodeUtils;
 import com.blankj.utilcode.util.EncryptUtils;
-import com.example.commonlibrary.util.LogUtil;
+import com.example.commonlibrary.util.CommonLog;
 import com.example.mvp.util.BaseUtils;
 
 import org.jetbrains.annotations.NotNull;
@@ -55,7 +55,7 @@ public class XiaomiMarketingDemo {
         String BaseData = queryResult + "&sign=" + md5Result;
         //变量 encrypt_key：kqkYAKhbqNNbMzTc
         String encryptKey = BaseUtils.encrypt(BaseData, encrypt_key);
-//        LogUtil.e("encryptKey:" + encryptKey);
+//        CommonLog.e("encryptKey:" + encryptKey);
         finallyRequest(encryptKey);
     }
 
@@ -77,6 +77,6 @@ public class XiaomiMarketingDemo {
             sb.append(EncodeUtils.urlEncode(result, "utf-8"));
             sb.append("&");
         }
-        LogUtil.e("Url:" + "http://trail.e.mi.com/global/log?" + sb.substring(0, sb.toString().length() - 1));
+        CommonLog.e("Url:" + "http://trail.e.mi.com/global/log?" + sb.substring(0, sb.toString().length() - 1));
     }
 }
