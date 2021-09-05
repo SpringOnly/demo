@@ -62,8 +62,8 @@ public class AgoraPlayer extends FrameLayout implements LifecycleObserver {
             return;
         }
         agoraMediaPlayerKit = rtcEngine.createMediaPlayer();
-        mMediaPlayerChange = new MediaPlayerChange();
-        agoraMediaPlayerKit.registerPlayerObserver(mMediaPlayerChange);
+//        mMediaPlayerChange = new MediaPlayerChange();
+//        agoraMediaPlayerKit.registerPlayerObserver(mMediaPlayerChange);
 
         SurfaceView surfaceView = new SurfaceView(context);
         surfaceView.setZOrderMediaOverlay(true);
