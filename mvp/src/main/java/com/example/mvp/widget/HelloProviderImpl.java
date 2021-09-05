@@ -4,13 +4,13 @@ import android.content.Context;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.blankj.utilcode.util.ToastUtils;
-import com.example.commonlibrary.base.arouter.ARouterConstant;
+import com.example.commonlibrary.base.arouter.RouterPath;
 import com.example.commonlibrary.router_provider.HelloProvider;
 
 /**
  * ARouter跨模块调用
  */
-@Route(path = ARouterConstant.HelloService)
+@Route(path = RouterPath.HelloService)
 public class HelloProviderImpl implements HelloProvider {
     @Override
     public void sayHello(String name) {

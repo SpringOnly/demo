@@ -14,7 +14,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 public class LoginDegradeService implements DegradeService {
     @Override
     public void onLost(Context context, Postcard postcard) {
-        ARouter.getInstance().build(ARouterConstant.MVC).navigation();
+        ARouter.getInstance().build(RouterPath.MVC).navigation();
     }
 
     @Override

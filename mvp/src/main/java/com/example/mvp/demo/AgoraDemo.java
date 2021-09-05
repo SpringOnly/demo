@@ -91,8 +91,8 @@ public class AgoraDemo extends UtilsAsyncTask {
             new UtilsAsyncTask(context, mEvents).execute();
         }
 
-        ArrayList<Effect> filter = Effect.EffectEnum.getEffectsByKey("stickers");
-        Effect effect = filter.get(1);
+//        ArrayList<Effect> filter = Effect.EffectEnum.getEffectsByKey("stickers");
+//        Effect effect = filter.get(1);
 
     }
 

@@ -6,7 +6,6 @@ import android.view.MotionEvent;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewbinding.ViewBinding;
 
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -14,14 +13,14 @@ import com.trello.rxlifecycle3.components.support.RxAppCompatActivity;
 
 public abstract class BaseActivity<VB extends ViewBinding> extends RxAppCompatActivity {
 
-    protected VB Binding;
+    protected VB mBinding;
     private Point mPoint;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Binding = getViewBinding();
-        setContentView(Binding.getRoot());
+        mBinding = getViewBinding();
+        setContentView(mBinding.getRoot());
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.hide();

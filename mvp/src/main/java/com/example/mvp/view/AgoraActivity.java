@@ -3,28 +3,22 @@ package com.example.mvp.view;
 
 import android.Manifest;
 import android.animation.ObjectAnimator;
-import android.os.Build;
 import android.view.SurfaceView;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.PermissionUtils;
-import com.blankj.utilcode.util.ToastUtils;
 import com.example.commonlibrary.base.BaseActivity;
-import com.example.commonlibrary.base.arouter.ARouterConstant;
+import com.example.commonlibrary.base.arouter.RouterPath;
 import com.example.mvp.databinding.ActivityAgoraBinding;
 
-import io.agora.mediaplayer.IMediaPlayer;
 import io.agora.rtc2.Constants;
-import io.agora.rtc2.IAudioEffectManager;
 import io.agora.rtc2.IRtcEngineEventHandler;
 import io.agora.rtc2.RtcEngine;
 import io.agora.rtc2.video.VideoCanvas;
 
-@Route(path = ARouterConstant.AGORA)
+@Route(path = RouterPath.AGORA)
 public class AgoraActivity extends BaseActivity<ActivityAgoraBinding> {
 
     @Override
@@ -38,15 +32,15 @@ public class AgoraActivity extends BaseActivity<ActivityAgoraBinding> {
 
         final String SAMPLE_MOVIE_URL = "https://webdemo.agora.io/agora-web-showcase/examples/Agora-Custom-VideoSource-Web/assets/sample.mp4";
 
-        Binding.agoraPlayer.bindLifecycle(this);
-        Binding.agoraPlayer.setDataSource(SAMPLE_MOVIE_URL);
-        Binding.agoraPlayer.setVolume(100);
-        Binding.agoraPlayer.start();
+        mBinding.agoraPlayer.bindLifecycle(this);
+        mBinding.agoraPlayer.setDataSource(SAMPLE_MOVIE_URL);
+        mBinding.agoraPlayer.setVolume(100);
+        mBinding.agoraPlayer.start();
 
-        Binding.btnMute.setOnClickListener(new View.OnClickListener() {
+        mBinding.btnMute.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ObjectAnimator translationX = ObjectAnimator.ofFloat(Binding.playRel, "translationY", 0, 500);
+                ObjectAnimator translationX = ObjectAnimator.ofFloat(mBinding.playRel, "translationY", 0, 500);
                 translationX.setDuration(2000);
                 translationX.start();
             }
@@ -101,7 +95,7 @@ public class AgoraActivity extends BaseActivity<ActivityAgoraBinding> {
 
         SurfaceView localView = new SurfaceView(this);
         localView.setZOrderMediaOverlay(true);
-        Binding.localVideoViewContainer.addView(localView);
+        mBinding.localVideoViewContainer.addView(localView);
         VideoCanvas videoCanvas = new VideoCanvas(localView, VideoCanvas.RENDER_MODE_ADAPTIVE, 0);
         mRtcEngine.setupLocalVideo(videoCanvas);
         mRtcEngine.startPreview();
@@ -142,9 +136,9 @@ public class AgoraActivity extends BaseActivity<ActivityAgoraBinding> {
         }
 
         private void setupRemoteVideo(int uid) {
-            SurfaceView surfaceView = new SurfaceView(Binding.remoteVideoViewContainer.getContext());
-            Binding.remoteVideoViewContainer.removeAllViews();
-            Binding.remoteVideoViewContainer.addView(surfaceView);
+            SurfaceView surfaceView = new SurfaceView(mBinding.remoteVideoViewContainer.getContext());
+            mBinding.remoteVideoViewContainer.removeAllViews();
+            mBinding.remoteVideoViewContainer.addView(surfaceView);
             VideoCanvas videoCanvas = new VideoCanvas(surfaceView, VideoCanvas.RENDER_MODE_HIDDEN, uid);
             mRtcEngine.setupRemoteVideo(videoCanvas);
         }
@@ -159,7 +153,7 @@ public class AgoraActivity extends BaseActivity<ActivityAgoraBinding> {
         }
 
         private void onRemoteUserLeft(int uid) {
-            Binding.remoteVideoViewContainer.removeAllViews();
+            mBinding.remoteVideoViewContainer.removeAllViews();
             mRtcEngine.setupRemoteVideo(new VideoCanvas(
                     null,
                     VideoCanvas.RENDER_MODE_HIDDEN,
@@ -179,7 +173,7 @@ public class AgoraActivity extends BaseActivity<ActivityAgoraBinding> {
 
     @Override
     protected void initListener() {
-        Binding.btnSwitchCamera.setOnClickListener(v -> mRtcEngine.switchCamera());
+        mBinding.btnSwitchCamera.setOnClickListener(v -> mRtcEngine.switchCamera());
     }
 
     @Override

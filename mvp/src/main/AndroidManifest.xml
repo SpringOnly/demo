@@ -4,6 +4,9 @@
 
     <application>
         <activity
+            android:name="com.example.main.view.ViewPagerTwoActivity"
+            android:exported="true" />
+        <activity
             android:name=".view.FaceUnityActivity"
             android:exported="true" />
         <activity android:name=".view.MVPActivity" />

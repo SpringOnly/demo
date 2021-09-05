@@ -1,5 +1,5 @@
 include ':app'
-rootProject.name = "ArouterComponent"
+rootProject.name = "arouter-component"
 include ':CommonLibrary'
 include ':main'
 include ':mvc'

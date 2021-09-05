@@ -2,13 +2,12 @@ package com.example.mvp.view;
 
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.blankj.utilcode.util.LogUtils;
 import com.example.commonlibrary.base.BaseActivity;
-import com.example.commonlibrary.base.arouter.ARouterConstant;
+import com.example.commonlibrary.base.arouter.RouterPath;
 import com.example.mvp.databinding.ActivityFaceUnityBinding;
 
 
-@Route(path = ARouterConstant.FACE_UNITY)
+@Route(path = RouterPath.FACE_UNITY)
 public class FaceUnityActivity extends BaseActivity<ActivityFaceUnityBinding> {
 
 

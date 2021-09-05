@@ -8,12 +8,19 @@ import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.callback.NavCallback;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.blankj.utilcode.util.ToastUtils;
 import com.example.commonlibrary.base.BaseActivity;
-import com.example.commonlibrary.base.arouter.ARouterConstant;
+import com.example.commonlibrary.base.arouter.RouterPath;
 import com.example.commonlibrary.router_provider.HelloProvider;
 import com.example.commonlibrary.util.CommonLog;
 import com.example.main.databinding.ActivityMainBinding;
+import com.example.main.widget.GlideEngine;
+import com.luck.picture.lib.PictureSelector;
+import com.luck.picture.lib.config.PictureConfig;
+import com.luck.picture.lib.config.PictureMimeType;
+import com.luck.picture.lib.entity.LocalMedia;
+import com.yalantis.ucrop.view.OverlayView;
+
+import java.util.List;
 
 
 public class MainActivity extends BaseActivity<ActivityMainBinding> {
@@ -33,9 +40,9 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
     @Override
     protected void initListener() {
-        Binding.mvc.setOnClickListener(v ->
+        mBinding.mvc.setOnClickListener(v ->
                 ARouter.getInstance()
-                        .build(ARouterConstant.MVC)
+                        .build(RouterPath.MVC)
                         .navigation(MainActivity.this,
                                 new NavCallback() {
                                     @Override
@@ -48,8 +55,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
                                         CommonLog.e("MainActivity：" + "onInterrupt : " + postcard.getPath());
                                     }
                                 }));
-        Binding.mvp.setOnClickListener(v ->
-                ARouter.getInstance().build(ARouterConstant.MVP)
+        mBinding.mvp.setOnClickListener(v ->
+                ARouter.getInstance().build(RouterPath.MVP)
                         .withInt("age", 18)
                         .navigation(MainActivity.this, new NavCallback() {
                             @Override
@@ -58,7 +65,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
                             }
                         }));
 
-        Binding.jumpMoudel.setOnClickListener(v ->
+        mBinding.jumpMoudel.setOnClickListener(v ->
                 mProvider.sayHello("jack"));
 
         //        ((HelloService)ARouter
@@ -67,13 +74,20 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 //                .navigation())
 //                .sayHello("jack name");
 
-        Binding.agora.setOnClickListener(v ->
-                ARouter.getInstance().build(ARouterConstant.AGORA)
+        mBinding.agora.setOnClickListener(v ->
+                ARouter.getInstance().build(RouterPath.AGORA)
                         .navigation());
 
-        Binding.faceUnity.setOnClickListener(v ->
-                ARouter.getInstance().build(ARouterConstant.FACE_UNITY)
+        mBinding.faceUnity.setOnClickListener(v ->
+                ARouter.getInstance().build(RouterPath.FACE_UNITY)
                         .navigation());
+
+
+        mBinding.picture.setOnClickListener(v -> selectPicture());
+
+        mBinding.viewPagerTwo.setOnClickListener(v ->
+                ARouter.getInstance().build(RouterPath.ViewPagerTwo)
+                .navigation());
     }
 
     @Override
@@ -81,14 +95,29 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
     }
 
+    private void selectPicture() {
+        PictureSelector.create(MainActivity.this)
+                .openGallery(PictureMimeType.ofImage())
+                .imageEngine(GlideEngine.createGlideEngine())
+                .isEnableCrop(true)
+                .scaleEnabled(false)
+                .rotateEnabled(false)
+                .freeStyleCropMode(OverlayView.FREESTYLE_CROP_MODE_ENABLE)
+                .forResult(PictureConfig.CHOOSE_REQUEST);
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
-            if (data != null) {
-                int name = data.getIntExtra("age", 0);
-                ToastUtils.showShort(String.valueOf(name));
+            switch (requestCode) {
+                case PictureConfig.CHOOSE_REQUEST:
+                    // 结果回调
+                    List<LocalMedia> result = PictureSelector.obtainMultipleResult(data);
+                    break;
+                default:
+                    break;
             }
         }
     }

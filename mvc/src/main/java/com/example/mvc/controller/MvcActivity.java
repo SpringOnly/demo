@@ -5,13 +5,13 @@ import android.view.View;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.commonlibrary.base.BaseActivity;
 import com.example.commonlibrary.base.CallBack;
-import com.example.commonlibrary.base.arouter.ARouterConstant;
+import com.example.commonlibrary.base.arouter.RouterPath;
 import com.example.commonlibrary.util.CommonLog;
 import com.example.mvc.databinding.ActivityMvcBinding;
 import com.example.mvc.model.BannerModel;
 import com.example.mvc.model.impl.BannerModelImpl;
 
-@Route(path = ARouterConstant.MVC)
+@Route(path = RouterPath.MVC)
 public class MvcActivity extends BaseActivity<ActivityMvcBinding> {
 
     private BannerModel mBannerModel;
@@ -41,7 +41,7 @@ public class MvcActivity extends BaseActivity<ActivityMvcBinding> {
             @Override
 
             public void onSuccess(String result) {
-                runOnUiThread(() -> Binding.result.setText(result));
+                runOnUiThread(() -> mBinding.result.setText(result));
             }
 
             @Override

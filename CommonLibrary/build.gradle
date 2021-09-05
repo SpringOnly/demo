@@ -27,6 +27,12 @@ dependencies {
     api "com.alibaba:arouter-api:1.5.1"
     //adapter通用适配器
     api "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.42"
+    //图片选择
+    api 'io.github.lucksiege:pictureselector:v2.7.3-rc07'
+    //图片加载
+    api 'com.github.bumptech.glide:glide:4.12.0'
+    //viewPager2
+    api "androidx.viewpager2:viewpager2:1.0.0"
 
     //内存泄漏检测
 //    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
