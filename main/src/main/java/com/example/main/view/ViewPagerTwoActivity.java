@@ -50,8 +50,11 @@ public class ViewPagerTwoActivity extends BaseActivity<ActivityViewPagerTwoBindi
                 super.onPageSelected(position);
                 currPosition = position;
                 CommonLog.e("view pager change position:" + position);
-                fragmentList.get(lastPosition).resetFragment(lastPosition);
-                lastPosition = position;
+                if (lastPosition == -1) {
+                    lastPosition = position;
+                } else {
+                    fragmentList.get(lastPosition).resetFragment(lastPosition);
+                }
 
                 for (int i = 0; i < fragmentList.size(); i++) {
                     if (position == i) {
