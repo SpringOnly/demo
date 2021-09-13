@@ -3,7 +3,7 @@
     package="com.example.main">
 
     <application>
-        <activity android:name=".MainActivity">
+        <activity android:name="amd.example.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -16,6 +16,9 @@ allprojects {
     repositories {
         google()
         jcenter()
+//        maven { url 'https://maven.google.com' }
+//        maven { url 'https://maven.fabric.io/public' }
+//        maven { url 'https://jcenter.bintray.com' }
         maven { url 'https://jitpack.io' }
     }
 }
@@ -34,9 +37,5 @@ ext {
             targetSdkVersion : 30,
             versionCode      : 1,
             versionName      : "1.0",
-    ]
-
-    dependencies = [
-            arouter_compiler: "com.alibaba:arouter-compiler:1.5.1",
     ]
 }

@@ -7,10 +7,10 @@
             android:name="com.example.main.view.ViewPagerTwoActivity"
             android:exported="true" />
         <activity
-            android:name=".view.FaceUnityActivity"
+            android:name="amd.example.mvp.view.FaceUnityActivity"
             android:exported="true" />
-        <activity android:name=".view.MVPActivity" />
-        <activity android:name=".view.AgoraActivity" />
+        <activity android:name="amd.example.mvp.view.MVPActivity" />
+        <activity android:name="amd.example.mvp.view.AgoraActivity" />
     </application>
 
 </manifest>
