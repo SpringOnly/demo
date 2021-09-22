@@ -13,8 +13,8 @@ android {
 
 dependencies {
     implementation project(':CommonLibrary')
-    implementation project(':main')
-    implementation project(':mvp')
+//    implementation project(':main')
+//    implementation project(':mvp')
 
     annotationProcessor 'com.alibaba:arouter-compiler:1.5.2'
 }
