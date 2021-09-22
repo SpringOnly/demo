@@ -42,7 +42,8 @@ public class MVPActivity extends BaseActivity<ActivityMvpBinding> implements MVP
         List<SnapHelperBean> list = new ArrayList<>();
         SnapHelperAdapter snapHelperAdapter = new SnapHelperAdapter();
         snapHelperAdapter.onAttachedToRecyclerView(mBinding.recycler);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this,
+                LinearLayoutManager.HORIZONTAL,false);
         mBinding.recycler.setLayoutManager(layoutManager);
         for (int i = 0; i < 20; i++) {
             SnapHelperBean snapHelperBean = new SnapHelperBean();
@@ -50,6 +51,7 @@ public class MVPActivity extends BaseActivity<ActivityMvpBinding> implements MVP
             list.add(snapHelperBean);
         }
         snapHelperAdapter.setNewData(list);
+        mBinding.recycler.setAdapter(snapHelperAdapter);
     }
 
     public void getData(View view) {

@@ -20,7 +20,6 @@ import amd.example.commonlibrary.router_provider.HelloProvider;
 import amd.example.demo.databinding.ActivityMainBinding;
 import amd.example.java.widget.GlideEngine;
 
-
 public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
     @Autowired
