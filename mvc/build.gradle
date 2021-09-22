@@ -1,6 +1,0 @@
-apply plugin: 'com.android.library'
-apply from: rootProject.file('gradle/module.gradle')
-
-dependencies {
-    implementation project(':CommonLibrary')
-}

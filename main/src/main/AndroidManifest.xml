@@ -11,6 +11,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="amd.example.main.view.ViewPagerTwoActivity" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileProvider"

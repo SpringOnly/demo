@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:clipChildren="false"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.example.main.amd.example.main.MainActivity">
-
-    <Button
-        android:id="@+id/mvc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="MVC" />
+    android:orientation="vertical">
 
     <Button
         android:id="@+id/mvp"
@@ -28,28 +23,28 @@
         android:id="@+id/agora"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAllCaps="false"
-        android:text="agora" />
+        android:text="agora"
+        android:textAllCaps="false" />
 
     <Button
         android:id="@+id/faceUnity"
-        android:text="FaceUnity"
-        android:textAllCaps="false"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="FaceUnity"
+        android:textAllCaps="false" />
 
     <Button
         android:id="@+id/picture"
-        android:text="picture"
-        android:textAllCaps="false"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="picture"
+        android:textAllCaps="false" />
 
     <Button
         android:id="@+id/viewPagerTwo"
-        android:text="ViewPagerTwo"
-        android:textAllCaps="false"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="ViewPagerTwo"
+        android:textAllCaps="false" />
 
 </LinearLayout>

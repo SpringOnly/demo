@@ -1,7 +1,18 @@
 apply plugin: 'com.android.library'
 apply from: rootProject.file('gradle/module.gradle')
 
+android {
+    defaultConfig {
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+}
+
+
 dependencies {
     implementation project(':CommonLibrary')
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    annotationProcessor 'com.alibaba:arouter-compiler:1.5.2'
 }

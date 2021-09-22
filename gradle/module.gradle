@@ -1,4 +1,3 @@
-apply from: rootProject.file('gradle/apt.gradle')
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -27,3 +26,4 @@ android {
         }
     }
 }
+
