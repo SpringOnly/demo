@@ -1,5 +1,3 @@
 include ':app'
-rootProject.name = "arouter-component"
+rootProject.name = "example"
 include ':CommonLibrary'
-//include ':main'
-//include ':mvp'
