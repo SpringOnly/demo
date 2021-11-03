@@ -73,14 +73,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
     }
 
     private void selectPicture() {
-        PictureSelector.create(MainActivity.this)
-                .openGallery(PictureMimeType.ofImage())
-                .imageEngine(GlideEngine.createGlideEngine())
-                .isEnableCrop(true)
-                .scaleEnabled(false)
-                .rotateEnabled(false)
-                .freeStyleCropMode(OverlayView.FREESTYLE_CROP_MODE_ENABLE)
-                .forResult(PictureConfig.CHOOSE_REQUEST);
     }
 
 

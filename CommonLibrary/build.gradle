@@ -37,6 +37,8 @@ dependencies {
     api "com.alibaba:arouter-api:1.5.2"
     //adapter通用适配器
     api "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.42"
+    //圆形图片
+    api 'de.hdodenhof:circleimageview:3.1.0'
     //图片选择
     api 'io.github.lucksiege:pictureselector:v2.7.3-rc07'
     //图片加载
