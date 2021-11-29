@@ -110,7 +110,6 @@ public class ViewPagerTwoActivity extends BaseActivity<ActivityViewPagerTwoBindi
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         if (super.dispatchTouchEvent(ev)) {
-            CommonLog.e("aaa:");
             return true;
         }
         mGestureDetector.onTouchEvent(ev);

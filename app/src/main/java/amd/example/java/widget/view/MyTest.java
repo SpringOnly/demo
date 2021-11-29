@@ -27,7 +27,6 @@ public class MyTest extends View {
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
         ToastUtils.showShort("拦截touch事件");
-        CommonLog.e("dispatchTouchEvent");
         return true;
     }
 }
