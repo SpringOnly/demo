@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="anim_visible_tag" type="id" />
+    <item name="anim_count_tag" type="id" />
+    <item name="anim_disposable_tag" type="id" />
+</resources>

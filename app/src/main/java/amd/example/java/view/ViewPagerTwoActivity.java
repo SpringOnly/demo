@@ -1,30 +1,36 @@
 package amd.example.java.view;
 
+
+import android.os.Handler;
+import android.view.GestureDetector;
 import android.view.MotionEvent;
 
-import androidx.viewpager2.widget.ViewPager2;
-
 import com.alibaba.android.arouter.facade.annotation.Route;
-import java.util.List;
+import com.blankj.utilcode.util.SizeUtils;
+import com.blankj.utilcode.util.ToastUtils;
 
 import amd.example.commonlibrary.base.BaseActivity;
 import amd.example.commonlibrary.base.arouter.RouterPath;
 import amd.example.commonlibrary.util.CommonLog;
 import amd.example.demo.databinding.ActivityViewPagerTwoBinding;
-import amd.example.java.view.adapter.ViewPagerAdapter;
+
 
 @Route(path = RouterPath.ViewPagerTwo)
 public class ViewPagerTwoActivity extends BaseActivity<ActivityViewPagerTwoBinding> {
 
-    //上一个选中的下标
-    private int lastPosition = -1;
-    //当前选中的下标
-    private int currPosition = -1;
+    private GestureDetector mGestureDetector;
+    //最小距离
+    int X_FLING_MIN_DISTANCE = SizeUtils.dp2px(25);
+    //最小速度
+    int X_FLING_MIN_VELOCITY = SizeUtils.dp2px(800);
 
-    //初始化的时候默认选中的下标
-    private int selectPosition = -1;
+    int Y_FLING_MIN_DISTANCE = SizeUtils.dp2px(100);
+    int Y_FLING_MIN_VELOCITY = SizeUtils.dp2px(800);
 
-    List<ViewPagerFragment> fragmentList;
+    //偏移动画是否执行完毕
+    private boolean isOffsetAnim;
+    //是否已经触发了垂直滑动
+    private boolean isDirectionVertical;
 
     @Override
     protected ActivityViewPagerTwoBinding getViewBinding() {
@@ -33,61 +39,86 @@ public class ViewPagerTwoActivity extends BaseActivity<ActivityViewPagerTwoBindi
 
     @Override
     protected void initView() {
-//        selectPosition = 1;
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
-        mBinding.viewPager.setAdapter(viewPagerAdapter);
-        fragmentList = viewPagerAdapter.getFragmentList();
 
-        if (selectPosition != -1) {
-            mBinding.viewPager.setCurrentItem(selectPosition, false);
-            lastPosition = selectPosition;
-            currPosition = selectPosition;
-            fragmentList.get(selectPosition).setViewPagerChange(selectPosition);
-        }
-        mBinding.viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+        mGestureDetector = new GestureDetector(this, new GestureDetector.SimpleOnGestureListener() {
             @Override
-            public void onPageSelected(int position) {
-                super.onPageSelected(position);
-                currPosition = position;
-                CommonLog.e("view pager change position:" + position);
-                if (lastPosition == -1) {
-                    lastPosition = position;
-                } else {
-                    fragmentList.get(lastPosition).resetFragment(lastPosition);
+            public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+                if (isDirectionVertical) {
+                    mBinding.partyView.setTranslationYOffset(e1.getY() - e2.getY());
+                    return false;
                 }
+                if (Math.abs(e1.getY() - e2.getY()) > 100) {
+                    isDirectionVertical = true;
+                    mBinding.partyView.setTranslationYOffset(e1.getY() - e2.getY());
+                }
+                return false;
+            }
 
-                for (int i = 0; i < fragmentList.size(); i++) {
-                    if (position == i) {
-                        fragmentList.get(i).setViewPagerChange(position);
-                        break;
+            @Override
+            public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+                //x方向大于Y方向
+                //x方向滑动的距离超过最小距离
+                //x方向滑动的速度超过最小速度
+                if (Math.abs(velocityX) > Math.abs(velocityY) &&
+                        Math.abs(e1.getX() - e2.getX()) > X_FLING_MIN_DISTANCE &&
+                        Math.abs(velocityX) > X_FLING_MIN_VELOCITY) {
+
+                    if (e1.getX() - e2.getX() > 0) {
+                        CommonLog.e("左");
+                        ToastUtils.showShort("左");
+                    } else {
+                        CommonLog.e("右");
+                        ToastUtils.showShort("右");
                     }
                 }
+
+                if (Math.abs(velocityY) > Math.abs(velocityX) &&
+                        Math.abs(e1.getY() - e2.getY()) > Y_FLING_MIN_DISTANCE &&
+                        Math.abs(velocityY) > Y_FLING_MIN_VELOCITY) {
+                    isOffsetAnim = true;
+                    if (e1.getY() - e2.getY() > 0) {
+                        CommonLog.e("上");
+                        mBinding.partyView.setTopSlide();
+                    } else {
+                        CommonLog.e("下");
+                        mBinding.partyView.setBottomSlide();
+                    }
+
+
+                    //模拟加入房间成功
+                    new Handler().postDelayed(() -> {
+                        mBinding.partyView.showPartyView();
+                    }, 1500);
+                }
+                return false;
             }
         });
     }
 
     @Override
-    public boolean dispatchTouchEvent(MotionEvent ev) {
-        boolean isDispatch = fragmentList.get(currPosition).onTouchEvent(ev, currPosition);
-        if (isDispatch) {
-            return true;
-        }
-        return super.dispatchTouchEvent(ev);
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        fragmentList.get(currPosition).exitFragment(currPosition);
-    }
-
-    @Override
     protected void initListener() {
-
+        mBinding.partyView.registerAnimListener(() -> {
+            isOffsetAnim = false;
+        });
     }
 
     @Override
     protected void initData() {
 
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (super.dispatchTouchEvent(ev)) {
+            CommonLog.e("aaa:");
+            return true;
+        }
+        mGestureDetector.onTouchEvent(ev);
+        int action = ev.getActionMasked();
+        if (!isOffsetAnim && action == MotionEvent.ACTION_UP) {
+            mBinding.partyView.resetViewOffset();
+            isDirectionVertical = false;
+        }
+        return super.dispatchTouchEvent(ev);
     }
 }

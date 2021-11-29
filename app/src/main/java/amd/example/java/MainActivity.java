@@ -1,24 +1,14 @@
 package amd.example.java;
 
-import android.content.Intent;
-
-import androidx.annotation.Nullable;
-
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.luck.picture.lib.PictureSelector;
-import com.luck.picture.lib.config.PictureConfig;
-import com.luck.picture.lib.config.PictureMimeType;
-import com.luck.picture.lib.entity.LocalMedia;
-import com.yalantis.ucrop.view.OverlayView;
-
-import java.util.List;
 
 import amd.example.commonlibrary.base.BaseActivity;
 import amd.example.commonlibrary.base.arouter.RouterPath;
 import amd.example.commonlibrary.router_provider.HelloProvider;
+import amd.example.commonlibrary.util.CommonLog;
 import amd.example.demo.databinding.ActivityMainBinding;
-import amd.example.java.widget.GlideEngine;
+import amd.example.java.bean.CloneTest;
 
 public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
@@ -30,11 +20,11 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
         return ActivityMainBinding.inflate(getLayoutInflater());
     }
 
+
     @Override
     protected void initView() {
 
     }
-
 
     @Override
     protected void initListener() {
@@ -60,7 +50,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
                 ARouter.getInstance().build(RouterPath.FACE_UNITY)
                         .navigation());
 
-        mBinding.picture.setOnClickListener(v -> selectPicture());
 
         mBinding.viewPagerTwo.setOnClickListener(v ->
                 ARouter.getInstance().build(RouterPath.ViewPagerTwo)
@@ -71,24 +60,4 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
     protected void initData() {
 
     }
-
-    private void selectPicture() {
-    }
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK) {
-            switch (requestCode) {
-                case PictureConfig.CHOOSE_REQUEST:
-                    // 结果回调
-                    List<LocalMedia> result = PictureSelector.obtainMultipleResult(data);
-                    break;
-                default:
-                    break;
-            }
-        }
-    }
-
 }

@@ -4,7 +4,7 @@ import android.util.Log;
 
 public class CommonLog {
 
-    private static final String TAG = "yun";
+    private static final String TAG = "spring";
 
     public static void e(String message) {
         Log.e(TAG, message + "");
