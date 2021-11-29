@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 
 import com.blankj.utilcode.util.ScreenUtils;
 
+import amd.example.commonlibrary.util.CommonLog;
 import amd.example.demo.databinding.PartyRoomViewBinding;
 import amd.example.java.util.SimpleOnAnimatorListener;
 
@@ -84,7 +85,7 @@ public class PartyBaseView extends RelativeLayout {
     }
 
     /**
-     * 松手以后重置偏移
+     * 抬起后重置偏移
      */
     public void resetViewOffset() {
         //向上不到一半就恢复原来的状态
@@ -98,7 +99,7 @@ public class PartyBaseView extends RelativeLayout {
             //模拟加入房间成功
             new Handler().postDelayed(() -> {
                 showPartyView();
-            }, 1500);
+            }, 1000);
         }
         //向下不到一半就恢复原来的状态
         if (offset < 0 && Math.abs(offset) < screenHeight / 2f) {
@@ -111,7 +112,7 @@ public class PartyBaseView extends RelativeLayout {
             //模拟加入房间成功
             new Handler().postDelayed(() -> {
                 showPartyView();
-            }, 1500);
+            }, 1000);
         }
         offset = 0;
     }
@@ -136,7 +137,7 @@ public class PartyBaseView extends RelativeLayout {
                 }
             }
         });
-        animator.setDuration(200);
+        animator.setDuration(280);
         animator.start();
     }
 

@@ -43,13 +43,13 @@ public class ViewPagerTwoActivity extends BaseActivity<ActivityViewPagerTwoBindi
         mGestureDetector = new GestureDetector(this, new GestureDetector.SimpleOnGestureListener() {
             @Override
             public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+                //如果已经超过滑动阈值
                 if (isDirectionVertical) {
                     mBinding.partyView.setTranslationYOffset(e1.getY() - e2.getY());
-                    return false;
                 }
-                if (Math.abs(e1.getY() - e2.getY()) > 100) {
+                //防止横向滑动偏移触发垂直滑动
+                if (!isDirectionVertical && Math.abs(e1.getY() - e2.getY()) > 80) {
                     isDirectionVertical = true;
-                    mBinding.partyView.setTranslationYOffset(e1.getY() - e2.getY());
                 }
                 return false;
             }
@@ -88,7 +88,7 @@ public class ViewPagerTwoActivity extends BaseActivity<ActivityViewPagerTwoBindi
                     //模拟加入房间成功
                     new Handler().postDelayed(() -> {
                         mBinding.partyView.showPartyView();
-                    }, 1500);
+                    }, 1000);
                 }
                 return false;
             }
@@ -113,8 +113,8 @@ public class ViewPagerTwoActivity extends BaseActivity<ActivityViewPagerTwoBindi
             return true;
         }
         mGestureDetector.onTouchEvent(ev);
-        int action = ev.getActionMasked();
-        if (!isOffsetAnim && action == MotionEvent.ACTION_UP) {
+
+        if (!isOffsetAnim && ev.getActionMasked() == MotionEvent.ACTION_UP) {
             mBinding.partyView.resetViewOffset();
             isDirectionVertical = false;
         }
