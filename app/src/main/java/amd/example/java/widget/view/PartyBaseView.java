@@ -42,7 +42,7 @@ public class PartyBaseView extends RelativeLayout {
     public PartyBaseView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        mBinding = PartyRoomViewBinding.inflate(LayoutInflater.from(context));
+        mBinding = PartyRoomViewBinding.inflate(LayoutInflater.from(context), this, false);
         addView(mBinding.getRoot());
         initView();
     }

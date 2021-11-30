@@ -27,7 +27,6 @@ public class MyViewGroup extends LinearLayout {
     public void computeScroll() {
         if (mScroller.computeScrollOffset()) {
             int currX = mScroller.getCurrY();
-            CommonLog.e("aaa:" + currX);
             scrollTo(0, mScroller.getCurrY());
             postInvalidate();
         }
