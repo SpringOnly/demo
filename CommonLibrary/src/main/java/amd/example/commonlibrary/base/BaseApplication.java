@@ -4,7 +4,6 @@ import android.app.Application;
 
 import com.alibaba.android.arouter.BuildConfig;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.facebook.drawee.backends.pipeline.Fresco;
 
 public class BaseApplication extends Application {
     private static BaseApplication instance;
@@ -27,6 +26,5 @@ public class BaseApplication extends Application {
             ARouter.openDebug();
         }
         ARouter.init(this);
-        Fresco.initialize(this);
     }
 }

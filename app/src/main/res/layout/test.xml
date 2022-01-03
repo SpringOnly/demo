@@ -14,7 +14,7 @@
             android:layout_height="70dp"
             android:src="@mipmap/user_girl_portrait_frame" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <ImageView
             android:id="@+id/heard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

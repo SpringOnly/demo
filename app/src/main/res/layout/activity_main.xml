@@ -38,10 +38,10 @@
         android:textAllCaps="false" />
 
     <Button
-        android:id="@+id/viewPagerTwo"
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ViewPagerTwo"
+        android:text="recyclerView"
         android:textAllCaps="false" />
 
 </LinearLayout>

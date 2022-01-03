@@ -7,7 +7,7 @@ public interface RouterPath {
     String DEMO = Base + "/demo";
     String AGORA = Base + "/agora";
     String FACE_UNITY = Base + "/faceUnity";
-    String ViewPagerTwo = Base + "/viewPagerTwo";
+    String RECYCLER = Base + "/recycler";
 
     String HelloService = "/service/helloservice";
 }

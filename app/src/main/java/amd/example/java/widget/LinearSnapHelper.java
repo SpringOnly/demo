@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.SnapHelper;
 /**
  * itemView左对齐
  */
-public class GallerySnapHelper extends SnapHelper {
+public class LinearSnapHelper extends SnapHelper {
 
     private OrientationHelper mHorizontalHelper;
 

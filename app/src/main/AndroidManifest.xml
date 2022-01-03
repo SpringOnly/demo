@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="amd.example.java.view.ViewPagerTwoActivity" />
+        <activity android:name="amd.example.java.view.RecyclerViewActivity" />
 
         <activity
             android:name="amd.example.java.view.FaceUnityActivity"

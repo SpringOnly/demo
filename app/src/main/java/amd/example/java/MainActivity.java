@@ -6,9 +6,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import amd.example.commonlibrary.base.BaseActivity;
 import amd.example.commonlibrary.base.arouter.RouterPath;
 import amd.example.commonlibrary.router_provider.HelloProvider;
-import amd.example.commonlibrary.util.CommonLog;
 import amd.example.demo.databinding.ActivityMainBinding;
-import amd.example.java.bean.CloneTest;
 
 public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
@@ -51,8 +49,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
                         .navigation());
 
 
-        mBinding.viewPagerTwo.setOnClickListener(v ->
-                ARouter.getInstance().build(RouterPath.ViewPagerTwo)
+        mBinding.recyclerView.setOnClickListener(v ->
+                ARouter.getInstance().build(RouterPath.RECYCLER)
                         .navigation());
     }
 
