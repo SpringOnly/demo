@@ -13,6 +13,7 @@ import amd.example.demo.R;
 import amd.example.demo.databinding.ActivityViewPagerTwoBinding;
 import amd.example.java.bean.SnapHelperBean;
 import amd.example.java.view.adapter.SnapHelperAdapter;
+import amd.example.java.widget.GallerySnapHelper;
 import amd.example.java.widget.TestSnapHelper;
 
 @Route(path = RouterPath.RECYCLER)
@@ -30,6 +31,8 @@ public class RecyclerViewActivity extends BaseActivity<ActivityViewPagerTwoBindi
         SnapHelperAdapter adapter = new SnapHelperAdapter();
 //        TestSnapHelper snapHelper = new TestSnapHelper();
 //        snapHelper.attachToRecyclerView(mBinding.recyclerView);
+        new GallerySnapHelper().attachToRecyclerView(mBinding.recyclerView);
+
         mBinding.recyclerView.setAdapter(adapter);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);

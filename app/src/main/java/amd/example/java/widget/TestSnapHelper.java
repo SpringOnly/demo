@@ -13,6 +13,8 @@ import amd.example.commonlibrary.util.CommonLog;
 public class TestSnapHelper extends SnapHelper {
 
     private OrientationHelper mHorizontalHelper;
+    final float INVALID_DISTANCE = 1f;
+
 
     //最后就是计算找到的view的坐标和需要对齐坐标之间的距离
     @Nullable
@@ -47,7 +49,6 @@ public class TestSnapHelper extends SnapHelper {
         //这两个数之间的插值就是需要偏移的距离
         return childCenter - recyclerCenter;
     }
-
 
     //找到最接近对齐位置的view
     @Nullable
@@ -116,50 +117,56 @@ public class TestSnapHelper extends SnapHelper {
     }
 
     private int estimateNextPositionDiffForFling(RecyclerView.LayoutManager layoutManager,
-                                                 OrientationHelper helper,
-                                                 int velocityX, int velocityY) {
-        //计算滚动的总距离
+                                                 OrientationHelper helper, int velocityX, int velocityY) {
         int[] distances = calculateScrollDistance(velocityX, velocityY);
-        //计算itemView的平均长度
         float distancePerChild = computeDistancePerChild(layoutManager, helper);
         if (distancePerChild <= 0) {
             return 0;
         }
         int distance =
                 Math.abs(distances[0]) > Math.abs(distances[1]) ? distances[0] : distances[1];
-        //distance的正负值符号表示滚动方向，数值表示滚动距离。横向布局方式，内容从右往左滚动为正；竖向布局方式，内容从下往上滚动为正
-        // 滚动距离/item的长度=滚动item的个数，这里取计算结果的整数部分
-        if (distance > 0) {
-            return (int) Math.floor(distance / distancePerChild);
-        } else {
-            return (int) Math.ceil(distance / distancePerChild);
-        }
+        return (int) Math.round(distance / distancePerChild);
     }
 
     private float computeDistancePerChild(RecyclerView.LayoutManager layoutManager,
                                           OrientationHelper helper) {
+        View minPosView = null;
+        View maxPosView = null;
+        int minPos = Integer.MAX_VALUE;
+        int maxPos = Integer.MIN_VALUE;
+        int childCount = layoutManager.getChildCount();
+        if (childCount == 0) {
+            return INVALID_DISTANCE;
+        }
 
-        int itemCount = layoutManager.getItemCount();
-        if (itemCount == 0) {
-            return 0;
+        for (int i = 0; i < childCount; i++) {
+            View child = layoutManager.getChildAt(i);
+            final int pos = layoutManager.getPosition(child);
+            if (pos == RecyclerView.NO_POSITION) {
+                continue;
+            }
+            if (pos < minPos) {
+                minPos = pos;
+                minPosView = child;
+            }
+            if (pos > maxPos) {
+                maxPos = pos;
+                maxPosView = child;
+            }
         }
-        View startView;
-        View endView;
-        for (int i = 0; i < itemCount; i++) {
-            View childAt = layoutManager.findViewByPosition(i);
-            CommonLog.e("" + i + " " + childAt);
+        if (minPosView == null || maxPosView == null) {
+            return INVALID_DISTANCE;
         }
-        startView = layoutManager.getChildAt(0);
-        endView = layoutManager.getChildAt(itemCount - 1);
-//        int decoratedStart = helper.getDecoratedStart(startView);
-//        int decoratedEnd = helper.getDecoratedEnd(endView);
-        //最后一个item的结束位置-第一个item的开始位置
-        //等于itemView的总长度
-//        int recyclerLength = decoratedEnd - decoratedStart;
-        //recyclerView的长度/item的总数=item的平均宽度
-        return 0;
+        int start = Math.min(helper.getDecoratedStart(minPosView),
+                helper.getDecoratedStart(maxPosView));
+        int end = Math.max(helper.getDecoratedEnd(minPosView),
+                helper.getDecoratedEnd(maxPosView));
+        int distance = end - start;
+        if (distance == 0) {
+            return INVALID_DISTANCE;
+        }
+        return 1f * distance / ((maxPos - minPos) + 1);
     }
-
 
     //横向滑动的帮助类
     private OrientationHelper getHorizontalHelper(RecyclerView.LayoutManager layoutManager) {
