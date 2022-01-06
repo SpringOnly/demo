@@ -16,8 +16,9 @@ import amd.example.commonlibrary.util.CommonLog;
 
 /**
  * @author Created by on LvJP 2022-01-04
+ * 左对齐
  */
-public class GallerySnapHelper extends SnapHelper {
+public class LeftSnapHelper extends SnapHelper {
     private OrientationHelper mOrientationHelper;
     final float INVALID_DISTANCE = 1f;
 
