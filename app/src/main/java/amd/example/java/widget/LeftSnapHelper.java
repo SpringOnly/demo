@@ -95,7 +95,6 @@ public class LeftSnapHelper extends SnapHelper {
 
         PointF vectorForEnd = vectorProvider.computeScrollVectorForPosition(itemCount - 1);
         if (vectorForEnd == null) {
-            // cannot get a vector for the given position.
             return RecyclerView.NO_POSITION;
         }
 
@@ -138,9 +137,8 @@ public class LeftSnapHelper extends SnapHelper {
         if (distancePerChild <= 0) {
             return 0;
         }
-        int distance =
-                Math.abs(distances[0]) > Math.abs(distances[1]) ? distances[0] : distances[1];
-        return (int) Math.round(distance / distancePerChild);
+        int distance = Math.abs(distances[0]) > Math.abs(distances[1]) ? distances[0] : distances[1];
+        return Math.round(distance / distancePerChild);
     }
 
     private float computeDistancePerChild(RecyclerView.LayoutManager layoutManager,
