@@ -7,6 +7,7 @@ import amd.example.commonlibrary.base.BaseActivity;
 import amd.example.commonlibrary.base.arouter.RouterPath;
 import amd.example.commonlibrary.router_provider.HelloProvider;
 import amd.example.demo.databinding.ActivityMainBinding;
+import amd.example.java.util.KotlinApiTest;
 
 public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
@@ -21,7 +22,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
     @Override
     protected void initView() {
-
+        KotlinApiTest.Companion.ListTest();
     }
 
     @Override
