@@ -22,7 +22,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
     @Override
     protected void initView() {
-        KotlinApiTest.Companion.ListTest();
+        KotlinApiTest test = new KotlinApiTest();
+        test.test();
     }
 
     @Override

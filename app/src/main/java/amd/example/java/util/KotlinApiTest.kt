@@ -8,12 +8,10 @@ import amd.example.commonlibrary.util.CommonLog
  */
 class KotlinApiTest {
 
-    companion object {
-        fun ListTest() {
-            val list = mutableListOf<Int>()
-            list.add(1)
-            list.add(10)
-            CommonLog.e("aa:$list")
-        }
+
+    fun test() {
+
     }
 }
+
+
