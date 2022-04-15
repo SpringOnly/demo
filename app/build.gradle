@@ -1,12 +1,26 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: rootProject.file('gradle/module.gradle')
+apply plugin: MyPlugin
+apply plugin: 'com.task.sky'
 
 android {
     defaultConfig {
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+}
+
+class MyPlugin implements Plugin<Project>{
+    @Override
+    void apply(Project target) {
+        println('MyPlugin执行了')
+        target.task("mytask"){
+            doLast {
+                println('MyPlugin中的task执行了')
             }
         }
     }

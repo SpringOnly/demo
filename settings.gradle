@@ -1,3 +1,4 @@
 include ':app'
 rootProject.name = "example"
 include ':CommonLibrary'
+include ':buildsrc'
