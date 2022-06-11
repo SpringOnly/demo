@@ -68,7 +68,7 @@
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="match_parent" />-->
 
-    <amd.example.java.widget.Anim.GiftRoseAnimLayout
+    <amd.example.java.widget.anim.GiftRoseAnimLayout
         android:id="@+id/gift"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

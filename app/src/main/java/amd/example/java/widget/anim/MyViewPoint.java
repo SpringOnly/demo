@@ -1,4 +1,4 @@
-package amd.example.java.widget.Anim;
+package amd.example.java.widget.anim;
 
 /**
  * @author Created by on LvJP 2022/5/30

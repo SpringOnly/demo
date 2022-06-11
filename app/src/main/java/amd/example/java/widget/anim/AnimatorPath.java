@@ -1,4 +1,4 @@
-package amd.example.java.widget.Anim;
+package amd.example.java.widget.anim;
 
 import java.util.ArrayList;
 import java.util.Collection;
