@@ -1,4 +1,4 @@
-package amd.example.java.widget.pathAnim;
+package amd.example.java.widget.Anim;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -12,9 +12,6 @@ import android.widget.RelativeLayout;
 
 import androidx.core.content.ContextCompat;
 
-import com.blankj.utilcode.util.ScreenUtils;
-
-import amd.example.commonlibrary.util.CommonLog;
 import amd.example.demo.R;
 
 /**

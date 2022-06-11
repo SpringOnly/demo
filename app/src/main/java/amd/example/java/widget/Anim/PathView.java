@@ -1,4 +1,4 @@
-package amd.example.java.widget.pathAnim;
+package amd.example.java.widget.Anim;
 
 import android.content.Context;
 import android.graphics.Canvas;
