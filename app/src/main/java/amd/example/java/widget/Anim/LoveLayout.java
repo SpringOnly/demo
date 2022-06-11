@@ -25,7 +25,7 @@ import amd.example.demo.R;
 
 /**
  * @author Created by on LvJP 2022/6/11
- * 点赞飘心动画
+ * 直播点赞飘心动画
  */
 public class LoveLayout extends RelativeLayout {
     private Context mContext;
