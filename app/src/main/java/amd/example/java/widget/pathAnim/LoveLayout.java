@@ -118,7 +118,7 @@ public class LoveLayout extends RelativeLayout {
     private ValueAnimator getBzierAnimator(ImageView imageView) {
         PointF[] point = getPoint();
         //两个控制点 p1和p2
-        BasEvaluator evaluator = new BasEvaluator(point[1], point[2]);
+        BaseEvaluator evaluator = new BaseEvaluator(point[1], point[2]);
         //开始点和结束点 p0和p3
         ValueAnimator valueAnimator = ValueAnimator.ofObject(evaluator, point[0], point[3]);
         valueAnimator.addUpdateListener(animation -> {

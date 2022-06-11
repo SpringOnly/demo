@@ -1,4 +1,4 @@
-package amd.example.java.widget;
+package amd.example.java.widget.pathAnim;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;

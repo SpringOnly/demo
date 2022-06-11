@@ -6,12 +6,12 @@ import android.graphics.PointF;
 /**
  * @author Created by on LvJP 2022/6/11
  */
-public class BasEvaluator implements TypeEvaluator<PointF> {
+public class BaseEvaluator implements TypeEvaluator<PointF> {
 
     private final PointF p1;
     private final PointF p2;
 
-    public BasEvaluator(PointF p1, PointF p2) {
+    public BaseEvaluator(PointF p1, PointF p2) {
         this.p1 = p1;
         this.p2 = p2;
     }
