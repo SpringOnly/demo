@@ -6,6 +6,15 @@ package amd.example.java.bean;
 public class GridlayoutBean {
 
     private String message;
+    private int icon;
+
+    public int getIcon() {
+        return icon;
+    }
+
+    public void setIcon(int icon) {
+        this.icon = icon;
+    }
 
     public String getMessage() {
         return message;

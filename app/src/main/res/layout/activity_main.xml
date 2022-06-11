@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -8,40 +9,68 @@
         android:id="@+id/mvp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="MVP" />
+        android:text="MVP"
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/jumpMoudel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="跨模块调用MVP中的方法" />
+        android:text="跨模块调用MVP中的方法"
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/agora"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="agora"
-        android:textAllCaps="false" />
+        android:textAllCaps="false"
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/faceUnity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="FaceUnity"
-        android:textAllCaps="false" />
+        android:textAllCaps="false"
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/picture"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="picture"
-        android:textAllCaps="false" />
+        android:textAllCaps="false"
+        android:visibility="gone" />
 
-    <Button
+    <TextView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="recyclerView"
-        android:textAllCaps="false" />
+        android:textAllCaps="false"
+        android:visibility="gone" />
 
-</LinearLayout>
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="送礼动画" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/testRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button" />
+
+<!--    <amd.example.java.widget.pathAnim.LoveLayout-->
+<!--        android:id="@+id/labeled"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent" />-->
+
+    <amd.example.java.widget.GiftRoseAnimLayout
+        android:id="@+id/gift"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</RelativeLayout>
